@@ -1,1 +1,65 @@
+@font-face {
+  font-family: "Kalameh-Regular";
+  src: url("../fonts/Kalameh-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kalameh-Medium";
+  src: url("../fonts/Kalameh-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Kalameh-Bold";
+  src: url("../fonts/Kalameh-Bold.ttf") format("truetype");
+}
+
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /*! Colors */
+  --color-primary: #030712;
+  --color-secondary: #cccccc;
+  --color-tertiary: #1e2939;
+  --color-card: #ffffff;
+  --color-basebackground: #f1f1f1;
+  --color-primary-text: #000000;
+  --color-secondary-text: #6a7282;
+  --color-primary-icon: #000000;
+  --color-secondary-icon: #6a7282;
+  /*! shadows */
+  --shadow-sm: 0px 0px 15px -4px rgba(0, 0, 0, 0.1);
+  /*! Font */
+  --font-kalameh-regular: "Kalameh-Regular";
+  --font-kalameh-medium: "Kalameh-Medium";
+  --font-kalameh-bold: "Kalameh-Bold";
+  /*! Font size */
+  --text-size-description: clamp(0.875rem, 2.5vw, 1rem);
+  --text-size-title: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+@layer base {
+  input {
+    @apply border-none outline-none;
+  }
+
+  .container {
+    @apply !max-w-375 mx-auto;
+  }
+}
+
+@layer components {
+  body {
+    @apply p-4 font-kalameh-regular text-size-description bg-basebackground;
+  }
+
+  /** Footer */
+  .social-link {
+    @apply size-7 p-1 flex items-center justify-center bg-basebackground rounded-full;
+  }
+
+  .social-link > svg {
+    @apply size-full [&_path]:fill-primary-icon;
+  }
+}
