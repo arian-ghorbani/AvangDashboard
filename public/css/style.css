@@ -18,7 +18,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /*! Colors */
+  /*! ----- Colors ----- */
   --color-primary: #030712;
   --color-secondary: #cccccc;
   --color-tertiary: #1e2939;
@@ -28,13 +28,13 @@
   --color-secondary-text: #6a7282;
   --color-primary-icon: #000000;
   --color-secondary-icon: #6a7282;
-  /*! shadows */
+  /*! ----- shadows ----- */
   --shadow-sm: 0px 0px 15px -4px rgba(0, 0, 0, 0.1);
-  /*! Font */
+  /*! ----- Font ----- */
   --font-kalameh-regular: "Kalameh-Regular";
   --font-kalameh-medium: "Kalameh-Medium";
   --font-kalameh-bold: "Kalameh-Bold";
-  /*! Font size */
+  /*! ----- Font size ----- */
   --text-size-description: clamp(0.875rem, 2.5vw, 1rem);
   --text-size-title: clamp(0.875rem, 2.5vw, 1rem);
 }
@@ -54,12 +54,47 @@
     @apply p-4 font-kalameh-regular text-size-description bg-basebackground;
   }
 
-  /** Footer */
+  /** ----- Main ----- */
+  /*? ----- Filter ----- */
+  .filter-button {
+    @apply font-kalameh-medium bg-basebackground text-primary-text rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white active:bg-black active:text-white active:[&_path]:fill-white;
+  }
+
+  .filter-button path {
+    @apply transition-colors duration-300 hover:fill-white;
+  }
+
+  /*? ----- Table ----- */
+  .main-content .table-wrapper .table-header {
+    @apply grow shrink text-start line-clamp-1;
+  }
+
+  .main-content .table-wrapper .table-header:nth-child(2) {
+    @apply grow-6 lg:grow-5;
+  }
+
+  .main-content .table-wrapper .table-header:nth-child(3) {
+    @apply grow-2;
+  }
+
+  .main-content .table-wrapper .table-header:nth-child(4) {
+    @apply grow-2;
+  }
+
+  .main-content .table-wrapper .table-header:nth-last-child {
+    @apply text-center;
+  }
+
+  /** ----- Footer ----- */
   .social-link {
-    @apply size-7 p-1 flex items-center justify-center bg-basebackground rounded-full;
+    @apply size-7 p-1 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300 md:size-8;
   }
 
   .social-link > svg {
-    @apply size-full [&_path]:fill-primary-icon;
+    @apply size-full [&_path]:fill-primary-icon [&_path]:transition-colors [&_path]:duration-300;
+  }
+
+  .social-link:hover {
+    @apply bg-black [&_path]:fill-white;
   }
 }

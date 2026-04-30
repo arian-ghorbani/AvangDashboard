@@ -1,8 +1,10 @@
-const Searchbox = () => {
+import clsx from "clsx";
+
+const Searchbox = ({ style }) => {
   return (
     <form
       action="#"
-      className="w-70 h-9 hidden relative bg-basebackground rounded-full md:inline-block lg:w-85 lg:h-10"
+      className={clsx("relative bg-basebackground rounded-full", style)}
     >
       <input
         type="text"

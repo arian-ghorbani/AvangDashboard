@@ -1,6 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="min-h-12 p-1.5 pt-2 flex flex-col items-center justify-center gap-y-2 bg-card shadow-sm rounded-full lg:min-h-14 lg:p-2">
+    <footer
+      className="w-full min-h-12 p-1.5 pt-2 flex flex-col items-center justify-center gap-y-2 bg-card shadow-sm rounded-full md:p-2.5 md:flex-row md:justify-between lg:min-h-14 lg:p-3"
+      dir="ltr"
+    >
       <h3>
         Created by{" "}
         <span className="px-1.5 font-kalameh-bold bg-black/20 rounded-xl">
@@ -12,6 +15,7 @@ const Footer = () => {
         {/* Link to telegram */}
         <a
           href="https://t.me/arian_ghorbanii"
+          target="_blank"
           aria-label="تلگرام"
           className="social-link"
         >
@@ -26,6 +30,7 @@ const Footer = () => {
         {/* Link to linkedin */}
         <a
           href="https://www.linkedin.com/in/arian-ghorbani/"
+          target="_blank"
           aria-label="لینکدین"
           className="social-link"
         >
@@ -40,6 +45,7 @@ const Footer = () => {
         {/* Link to github */}
         <a
           href="https://github.com/arian-ghorbani"
+          target="_blank"
           aria-label="گیت هاب"
           className="social-link"
         >

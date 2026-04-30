@@ -1,8 +1,9 @@
+import { Activity, useEffect } from "react";
 import Searchbox from "./Searchbox";
 
 const Header = () => {
   return (
-    <header className="h-12 px-1.5 flex items-center bg-card shadow-sm rounded-full lg:h-14 lg:px-2">
+    <header className="w-full h-12 px-1.5 flex items-center bg-card shadow-sm rounded-full lg:h-14 lg:px-2">
       <nav className="flex items-center">
         <section className="right-section flex items-center">
           <button
@@ -23,7 +24,7 @@ const Header = () => {
             </svg>
           </button>
 
-          <Searchbox />
+          <Searchbox style="w-70 h-9 hidden md:inline-block lg:w-85 lg:h-10" />
         </section>
 
         <section className="left-section"></section>
