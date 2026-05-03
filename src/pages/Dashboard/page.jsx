@@ -29,8 +29,6 @@ const Dashboard = () => {
         <Filter style="size-9 p-2 flex item-center gap-x-1 shrink-0 grow-0 md:w-fit md:pl-3">
           فیلتر
         </Filter>
-
-        <Searchbox style="max-w-70 h-9 shrink-1 grow-1 inline-block md:hidden lg:w-85 lg:h-10" />
       </section>
 
       <section className="main-content space-y-1.5 md:space-y-2 lg:space-y-4">

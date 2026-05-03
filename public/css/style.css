@@ -88,7 +88,14 @@
   }
 
   .table-cell:nth-child(6) {
-    @apply w-17 text-center;
+    @apply w-17 !flex items-center justify-center gap-x-1.5 lg:gap-x-2;
+  }
+
+  /*? ----- Tools ----- */
+  .show-tool-btn,
+  .edit-tool-btn,
+  .remove-tool-btn {
+    @apply cursor-pointer [&_svg]:size-4.5 [&_path]:transition-colors [&_path]:duration-300 lg:[&_svg]:size-5;
   }
 
   /*? ----- Pagination ----- */

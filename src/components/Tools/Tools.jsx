@@ -1,4 +1,4 @@
-function Tools() {
+function Tools({ children }) {
   return;
 }
 
