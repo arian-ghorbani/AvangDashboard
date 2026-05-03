@@ -1,4 +1,4 @@
-export const TABLE_HEADS = [
+export const TABLE_HEAD_TITLES = [
   "شماره کالا",
   "کالا",
   "قیمت خرید",

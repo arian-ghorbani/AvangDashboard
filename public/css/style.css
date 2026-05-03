@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Kalameh-Regular";
-  src: url("../fonts/Kalameh-Regular.ttf") format("truetype");
+  src: url("/fonts/Kalameh-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Kalameh-Medium";
-  src: url("../fonts/Kalameh-Medium.ttf") format("truetype");
+  src: url("/fonts/Kalameh-Medium.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Kalameh-Bold";
-  src: url("../fonts/Kalameh-Bold.ttf") format("truetype");
+  src: url("/fonts/Kalameh-Bold.ttf") format("truetype");
 }
 
 @import "tailwindcss";
@@ -54,6 +54,12 @@
     @apply p-4 font-kalameh-regular text-size-description bg-basebackground;
   }
 
+  /** ----- Header ----- */
+  .export-btn,
+  .import-btn {
+    @apply w-fit h-full px-2.5 text-nowrap cursor-pointer transition-colors duration-300 md:px-3;
+  }
+
   /** ----- Main ----- */
   /*? ----- Filter ----- */
   .filter-button {
@@ -65,24 +71,40 @@
   }
 
   /*? ----- Table ----- */
-  .main-content .table-wrapper .table-header {
-    @apply grow shrink text-start line-clamp-1;
+  .table-head-row .table-row-elem {
+    @apply bg-basebackground;
   }
 
-  .main-content .table-wrapper .table-header:nth-child(2) {
-    @apply grow-6 lg:grow-5;
+  .table-cell:nth-child(1) {
+    @apply max-w-18;
   }
 
-  .main-content .table-wrapper .table-header:nth-child(3) {
-    @apply grow-2;
+  .table-cell:nth-child(2) {
+    @apply !flex-2;
   }
 
-  .main-content .table-wrapper .table-header:nth-child(4) {
-    @apply grow-2;
+  .table-cell:nth-child(5) {
+    @apply max-w-12;
   }
 
-  .main-content .table-wrapper .table-header:nth-last-child {
-    @apply text-center;
+  .table-cell:nth-child(6) {
+    @apply w-17 text-center;
+  }
+
+  /*? ----- Pagination ----- */
+  .pagination-prev-btn,
+  .pagination-next-btn,
+  .pagination-btn {
+    @apply size-8 flex items-center justify-center bg-basebackground rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white active:bg-black active:text-white md:size-8.5 lg:size-9;
+  }
+
+  .pagination-prev-btn,
+  .pagination-next-btn {
+    @apply [&_svg]:size-7;
+  }
+
+  .pagination-btn.active {
+    @apply bg-black text-white;
   }
 
   /** ----- Footer ----- */

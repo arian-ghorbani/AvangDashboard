@@ -1,11 +1,12 @@
-import { Activity, useEffect } from "react";
+import Export from "../features/Export";
+import Import from "../features/Import";
 import Searchbox from "./Searchbox";
 
 const Header = () => {
   return (
-    <header className="w-full h-12 px-1.5 flex items-center bg-card shadow-sm rounded-full lg:h-14 lg:px-2">
-      <nav className="flex items-center">
-        <section className="right-section flex items-center">
+    <header className="w-full h-12 px-1.5 flex items-center bg-card shadow-sm rounded-full md:h-13 md:px-2 lg:h-14 lg:px-2.5">
+      <nav className="w-full">
+        <section className="right-section flex items-center justify-between">
           <button
             type="button"
             aria-label="منو"
@@ -25,6 +26,12 @@ const Header = () => {
           </button>
 
           <Searchbox style="w-70 h-9 hidden md:inline-block lg:w-85 lg:h-10" />
+
+          <div className="import-export-wrapper h-8.5 flex items-center border-2 border-basebackground rounded-full overflow-hidden md:h-9 lg:h-10">
+            <Import />
+
+            <Export />
+          </div>
         </section>
 
         <section className="left-section"></section>

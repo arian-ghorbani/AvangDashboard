@@ -10,7 +10,7 @@ const Searchbox = ({ style }) => {
         type="text"
         name="searchbox"
         id="searchbox"
-        className="size-full pr-10 pl-4"
+        className="size-full pr-10 pl-4 font-kalameh-medium"
         placeholder="جستجو کنید ..."
       />
 
