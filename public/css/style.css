@@ -54,6 +54,10 @@
     @apply p-4 font-kalameh-regular text-size-description bg-basebackground;
   }
 
+  #root {
+    @apply h-dvh;
+  }
+
   /** ----- Header ----- */
   .export-btn,
   .import-btn {
@@ -62,12 +66,14 @@
 
   /** ----- Main ----- */
   /*? ----- Filter ----- */
-  .filter-button {
-    @apply font-kalameh-medium bg-basebackground text-primary-text rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white active:bg-black active:text-white active:[&_path]:fill-white;
+  .filter-button,
+  .add-new-product-btn {
+    @apply size-9 p-2 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text border-2 border-solid border-transparent rounded-full cursor-pointer transition-colors duration-300 md:w-fit md:pl-3 hover:!bg-black hover:text-white active:!bg-black active:text-white;
   }
 
-  .filter-button path {
-    @apply transition-colors duration-300 hover:fill-white;
+  .filter-button svg,
+  .add-new-product-btn svg {
+    @apply size-4.5 transition-colors duration-300 lg:size-5;
   }
 
   /*? ----- Table ----- */

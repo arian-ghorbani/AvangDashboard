@@ -3,7 +3,6 @@ import TableBody from "../components/Table/elements/TableBody";
 import TableCell from "../components/Table/elements/TableCell";
 import TableHead from "../components/Table/elements/TableHead";
 import TableRow from "../components/Table/elements/TableRow";
-import Tools from "../components/Tools/Tools";
 import EditTool from "../components/Tools/elements/EditTool";
 import RemoveTool from "../components/Tools/elements/RemoveTool";
 import ShowTool from "../components/Tools/elements/ShowTool";

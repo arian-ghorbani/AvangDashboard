@@ -1,5 +1,3 @@
-import Export from "../features/Export";
-import Import from "../features/Import";
 import Searchbox from "./Searchbox";
 
 const Header = () => {
@@ -10,16 +8,11 @@ const Header = () => {
           <button
             type="button"
             aria-label="منو"
-            className="size-8.5 p-1.5 grow-0 shrink-0 flex items-center justify-center bg-basebackground rounded-full md:hidden"
+            className="size-8.5 p-1.5 grow-0 shrink-0 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300 md:hidden [&_svg]:size-5.5 active:bg-black active:text-white"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="size-full"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
-                className="fill-primary-icon"
                 d="M2 6a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m0 6.032a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H3a1 1 0 0 1-1-1m1 5.033a1 1 0 1 0 0 2h18a1 1 0 0 0 0-2z"
               />
             </svg>

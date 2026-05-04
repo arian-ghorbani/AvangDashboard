@@ -1,0 +1,20 @@
+function AddNewProduct({ children }) {
+  return (
+    <button type="button" className="add-new-product-btn border-black">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+          <path
+            fill="currentColor"
+            d="M9 3a1 1 0 0 0-2 0v4H3a1 1 0 0 0 0 2h4v4a1 1 0 0 0 2 0V9h4a1 1 0 0 0 0-2H9z"
+          />
+        </svg>
+      </span>
+
+      <span className="hidden md:inline-flex md:items-center md:justify-center">
+        {children}
+      </span>
+    </button>
+  );
+}
+
+export default AddNewProduct;
