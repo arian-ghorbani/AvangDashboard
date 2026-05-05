@@ -19,7 +19,7 @@
 
 @theme {
   /*! ----- Colors ----- */
-  --color-primary: #030712;
+  --color-primary: #000000;
   --color-secondary: #cccccc;
   --color-tertiary: #1e2939;
   --color-card: #ffffff;
@@ -36,7 +36,7 @@
   --font-kalameh-bold: "Kalameh-Bold";
   /*! ----- Font size ----- */
   --text-size-description: clamp(0.875rem, 2.5vw, 1rem);
-  --text-size-title: clamp(0.875rem, 2.5vw, 1rem);
+  --text-size-title: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 @layer base {
@@ -55,13 +55,40 @@
   }
 
   #root {
-    @apply h-dvh;
+    @apply h-[calc(100dvh-2rem)];
   }
 
-  /** ----- Header ----- */
-  .export-btn,
-  .import-btn {
-    @apply w-fit h-full px-2.5 text-nowrap cursor-pointer transition-colors duration-300 md:px-3;
+  /** ----- Sidebar ----- */
+  #sidebar {
+    @apply max-w-65 w-2/3 p-3 fixed top-0 bottom-0 right-0 translate-x-full flex flex-col items-start justify-between bg-card shadow-sm rounded-l-4xl z-50 transition-[width,translate] duration-300 md:w-13 md:h-full md:p-2 md:static md:translate-x-0 md:rounded-4xl lg:w-16 lg:p-2.5;
+  }
+
+  #sidebar.open {
+    @apply translate-x-0 md:w-60;
+  }
+
+  .menu-item,
+  .import-btn,
+  .export-btn {
+    @apply w-full h-9 px-3 flex items-center justify-start gap-x-2 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5 md:size-9 md:p-0 md:justify-center lg:size-11;
+  }
+
+  #sidebar.open .menu-item,
+  #sidebar.open .import-btn,
+  #sidebar.open .export-btn {
+    @apply md:w-full md:px-2 md:justify-start lg:px-3;
+  }
+
+  #sidebar .item-text {
+    @apply grow-0 shrink-0;
+  }
+
+  #sidebar .item-text {
+    @apply md:hidden;
+  }
+
+  #sidebar.open .item-text {
+    @apply md:block;
   }
 
   /** ----- Main ----- */

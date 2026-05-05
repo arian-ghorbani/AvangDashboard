@@ -1,14 +1,15 @@
 import Searchbox from "./Searchbox";
 
-const Header = () => {
+const Header = ({ onClickHandler }) => {
   return (
     <header className="w-full h-12 px-1.5 flex items-center bg-card shadow-sm rounded-full md:h-13 md:px-2 lg:h-14 lg:px-2.5">
       <nav className="w-full">
-        <section className="right-section flex items-center justify-start gap-x-1.5">
+        <section className="right-section flex items-center justify-start gap-x-1.5 md:gap-x-2 lg:gap-x-2.5">
           <button
             type="button"
             aria-label="منو"
-            className="size-8.5 p-1.5 grow-0 shrink-0 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300 md:hidden [&_svg]:size-5.5 active:bg-black active:text-white"
+            className="size-8.5 p-1.5 grow-0 shrink-0 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300 cursor-pointer hover:bg-black hover:text-white active:bg-black active:text-white [&_svg]:size-5.5 lg:size-10"
+            onClick={onClickHandler}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path
