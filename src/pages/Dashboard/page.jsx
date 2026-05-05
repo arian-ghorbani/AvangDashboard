@@ -1,12 +1,18 @@
 import { Activity, useEffect, useState } from "react";
-import Filter from "../../features/Filter";
+import Filter from "../../components/Table/elements/Filter";
 import { TABLE_HEAD_TITLES } from "/src/data/constants";
 import LastProducts from "../../features/LastProduct";
 import Pagination from "../../components/Table/elements/Pagination";
 import AddNewProduct from "../../components/AddNewProduct";
 
 const Dashboard = () => {
+  const [allProducts, setAllProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const paginationData = {
+    items: [...allProducts].reverse(),
+    setItems: setProducts,
+    itemsPerPage: 4,
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -14,7 +20,7 @@ const Dashboard = () => {
         const res = await fetch("/src/data/products.json");
         const data = await res.json();
 
-        setProducts([...data]);
+        setAllProducts([...data]);
       } catch (error) {
         console.log("Fetching products has error: ", error);
       }
@@ -34,15 +40,17 @@ const Dashboard = () => {
       <section className="main-content space-y-1.5 md:space-y-2 lg:space-y-4">
         <Activity
           mode={
-            products.length && TABLE_HEAD_TITLES.length ? "visible" : "hidden"
+            allProducts.length && TABLE_HEAD_TITLES.length
+              ? "visible"
+              : "hidden"
           }
         >
           <LastProducts
-            products={[...products].reverse()}
+            products={products}
             tableHeadTitles={TABLE_HEAD_TITLES}
           />
 
-          <Pagination />
+          <Pagination {...paginationData} />
         </Activity>
       </section>
     </div>

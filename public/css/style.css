@@ -143,6 +143,11 @@
     @apply [&_svg]:size-7;
   }
 
+  .pagination-prev-btn:disabled,
+  .pagination-next-btn:disabled {
+    @apply bg-transparent text-secondary cursor-no-drop hover:text-secondary active:text-secondary;
+  }
+
   .pagination-btn.active {
     @apply bg-black text-white;
   }

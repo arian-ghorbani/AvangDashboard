@@ -6,11 +6,11 @@ function Import() {
           <g
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-width="1.5"
+            strokeLinecap="round"
+            strokeWidth="1.5"
           >
             <path d="M4 12a8 8 0 1 0 16 0" opacity="0.5" />
-            <path stroke-linejoin="round" d="M12 4v10m0 0l3-3m-3 3l-3-3" />
+            <path strokeLinejoin="round" d="M12 4v10m0 0l3-3m-3 3l-3-3" />
           </g>
         </svg>
       </span>
