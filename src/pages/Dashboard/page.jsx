@@ -1,4 +1,4 @@
-import { Activity, useEffect, useState } from "react";
+import { Activity, useCallback, useEffect, useMemo, useState } from "react";
 import Filter from "../../components/Table/elements/Filter";
 import { TABLE_HEAD_TITLES } from "/src/data/constants";
 import LastProducts from "../../features/LastProduct";
@@ -7,34 +7,47 @@ import AddNewProduct from "../../components/AddNewProduct";
 
 const Dashboard = () => {
   const [allProducts, setAllProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const paginationData = {
-    items: [...allProducts].reverse(),
-    setItems: setProducts,
-    itemsPerPage: 4,
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const res = await fetch("/src/data/products.json");
         const data = await res.json();
-
         setAllProducts([...data]);
       } catch (error) {
         console.log("Fetching products has error: ", error);
       }
     };
-
     fetchProducts();
   }, []);
+
+  const handleAddProduct = useCallback((newProduct) => {
+    setAllProducts((prev) => {
+      const newId = prev.length ? Math.max(...prev.map((p) => p.id)) + 1 : 1;
+      return [...prev, { id: newId, ...newProduct }];
+    });
+    setCurrentPage(1);
+  }, []);
+
+  const reversedProducts = useMemo(
+    () => [...allProducts].reverse(),
+    [allProducts],
+  );
+
+  const products = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return reversedProducts.slice(start, start + itemsPerPage);
+  }, [reversedProducts, currentPage]);
 
   return (
     <div className="size-full p-1.5 space-y-1.5 bg-card shadow-sm rounded-3xl md:p-2 md:space-y-2 lg:p-4 lg:space-y-4">
       <section className="section-tools flex items-center justify-start gap-x-1.5 ">
         <Filter>فیلتر</Filter>
-
-        <AddNewProduct>ایجاد محصول</AddNewProduct>
+        <AddNewProduct onAddProduct={handleAddProduct}>
+          ایجاد محصول
+        </AddNewProduct>
       </section>
 
       <section className="main-content space-y-1.5 md:space-y-2 lg:space-y-4">
@@ -50,7 +63,12 @@ const Dashboard = () => {
             tableHeadTitles={TABLE_HEAD_TITLES}
           />
 
-          <Pagination {...paginationData} />
+          <Pagination
+            totalItems={allProducts.length}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
         </Activity>
       </section>
     </div>

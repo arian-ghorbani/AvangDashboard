@@ -1,40 +1,29 @@
-import { Activity, memo, useEffect, useState } from "react";
+import { Activity, memo } from "react";
 import clsx from "clsx";
 
-function Pagination({ items, setItems, itemsPerPage }) {
-  const [currentPage, setCurrentPage] = useState(1);
+function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }) {
+  const numberOfPages = Math.ceil(totalItems / itemsPerPage);
   const paginationButtons = [];
-  const numberOfPages = Math.ceil(items.length / itemsPerPage);
 
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const mainItems = items.slice(startIndex, endIndex);
-    setItems(mainItems);
-  }, [currentPage]);
-
-  const handlerChangePagination = (e) => {
-    setCurrentPage(+e.target.innerHTML);
-  };
-
-  const PrevPage = () => {
-    currentPage > 1 && setCurrentPage(currentPage - 1);
+  const prevPage = () => {
+    if (currentPage > 1) onPageChange(currentPage - 1);
   };
 
   const nextPage = () => {
-    currentPage < numberOfPages && setCurrentPage(currentPage + 1);
+    if (currentPage < numberOfPages) onPageChange(currentPage + 1);
   };
 
   for (let i = 1; i <= numberOfPages; i++) {
     paginationButtons.push(
-      <buuton
+      <button
+        key={i}
         type="button"
         aria-label="دکمه صفحه بندی"
         className={clsx("pagination-btn", { active: i === currentPage })}
-        onClick={(e) => handlerChangePagination(e)}
+        onClick={() => onPageChange(i)}
       >
         {i}
-      </buuton>,
+      </button>
     );
   }
 
@@ -46,7 +35,7 @@ function Pagination({ items, setItems, itemsPerPage }) {
           aria-label="دکمه قبلی"
           className="pagination-prev-btn"
           disabled={currentPage === 1}
-          onClick={PrevPage}
+          onClick={prevPage}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path
@@ -58,7 +47,7 @@ function Pagination({ items, setItems, itemsPerPage }) {
           </svg>
         </button>
 
-        {...paginationButtons}
+        {paginationButtons}
 
         <button
           type="button"

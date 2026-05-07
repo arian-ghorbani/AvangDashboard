@@ -86,7 +86,7 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
       {/* OverLay */}
       <div
         className={clsx(
-          "overlay size-full top-0 right-0 fixed bg-black/30 invisible opacity-0 z-49 transition duration-350 md:hidden",
+          "overlay size-full top-0 right-0 fixed bg-black/30 invisible opacity-0 z-39 transition duration-350 md:hidden",
           isSidebarOpen && "visible opacity-100",
         )}
       ></div>
