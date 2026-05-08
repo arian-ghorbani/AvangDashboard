@@ -1,17 +1,34 @@
 import clsx from "clsx";
+import { useContext, useEffect, useState } from "react";
+import { ProductsContext } from "../context/ProductsProvider";
 
 const Searchbox = ({ style }) => {
+  const { setSearchQuery } = useContext(ProductsContext);
+  const [inputValue, setInputValue] = useState("");
+
+  // debounce: 500ms بعد از آخرین کاراکتر، جستجو اجرا میشه
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(inputValue.trim());
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [inputValue]);
+
   return (
     <form
       action="#"
       className={clsx("relative bg-basebackground rounded-full", style)}
+      onSubmit={(e) => e.preventDefault()}
     >
       <input
+        value={inputValue}
         type="text"
         name="searchbox"
         id="searchbox"
         className="size-full pr-10 pl-4 font-kalameh-medium"
         placeholder="جستجو کنید ..."
+        onChange={(e) => setInputValue(e.target.value)}
       />
 
       <span className="size-6 absolute top-1/2 right-2.5 -translate-y-1/2 lg:size-6.5">
