@@ -1,9 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const ProductsContext = createContext();
 
 function ProductsProvider({ children }) {
-  const [allProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts, addProduct] = useLocalStorage(
+    "products",
+    "/src/data/products.json",
+  );
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -21,7 +25,13 @@ function ProductsProvider({ children }) {
 
   return (
     <ProductsContext.Provider
-      value={{ allProducts, setAllProducts, searchQuery, setSearchQuery }}
+      value={{
+        allProducts,
+        setAllProducts,
+        addProduct,
+        searchQuery,
+        setSearchQuery,
+      }}
     >
       {children}
     </ProductsContext.Provider>

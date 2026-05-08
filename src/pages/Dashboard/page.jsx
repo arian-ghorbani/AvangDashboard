@@ -7,19 +7,19 @@ import AddNewProduct from "../../components/AddNewProduct";
 import { ProductsContext } from "../../context/ProductsProvider";
 
 const Dashboard = () => {
-  const { allProducts, setAllProducts, searchQuery } =
+  const { allProducts, setAllProducts, searchQuery, addProduct } =
     useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
   const itemsPerPage = 4;
 
-  const handleAddProduct = useCallback((newProduct) => {
-    setAllProducts((prev) => {
-      const newId = prev.length ? Math.max(...prev.map((p) => p.id)) + 1 : 1;
-      return [...prev, { id: newId, ...newProduct }];
-    });
-    setCurrentPage(1);
-  }, []);
+  const handleAddProduct = useCallback(
+    (newProduct) => {
+      addProduct(newProduct); // ← اینجا از addProduct استفاده کن
+      setCurrentPage(1);
+    },
+    [addProduct],
+  );
 
   const filteredByCategory = useMemo(() => {
     switch (productsFilter) {
