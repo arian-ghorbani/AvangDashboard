@@ -23,7 +23,7 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }) {
         onClick={() => onPageChange(i)}
       >
         {i}
-      </button>
+      </button>,
     );
   }
 

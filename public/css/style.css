@@ -103,6 +103,18 @@
     @apply size-4.5 transition-colors duration-300 lg:size-5;
   }
 
+  .filter-itemes-wrapper {
+    @apply w-30 absolute top-9 right-0 bg-basebackground shadow-sm rounded-xl z-48 overflow-hidden md:w-35;
+  }
+
+  .filter-item {
+    @apply px-2 py-1 rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white active:bg-black active:text-white;
+  }
+
+  .filter-item.active::before {
+    @apply content-['✔️'] ml-1;
+  }
+
   /*? ----- Table ----- */
   .table-head-row .table-row-elem {
     @apply bg-basebackground;
@@ -159,12 +171,12 @@
   }
 
   .modal .input-modal {
-    @apply w-full h-9 px-4 bg-basebackground rounded-full;
+    @apply w-full h-9 px-4 bg-basebackground rounded-full md:h-10;
   }
 
   .modal .cancel-btn,
   .modal .confirm-btn {
-    @apply h-7.5 px-3.5 rounded-full transition-colors duration-300;
+    @apply h-7.5 px-3.5 rounded-full cursor-pointer transition-colors duration-300 md:h-8.5;
   }
 
   /** ----- Footer ----- */

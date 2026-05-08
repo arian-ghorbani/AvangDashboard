@@ -14,7 +14,7 @@ function Modal({ children }) {
         isOpen && "visible opacity-100",
       )}
     >
-      <div className="wrapper w-4/5 p-2.5 space-y-4 bg-card rounded-3xl">
+      <div className="wrapper w-4/5 p-2.5 space-y-4 bg-card rounded-3xl md:w-90 md:p-4">
         <HeaderModal title="ایجاد محصول جدید" closeModalHandler={toggleModal} />
 
         <div className="content space-y-2">{children}</div>

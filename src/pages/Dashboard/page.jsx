@@ -8,6 +8,7 @@ import AddNewProduct from "../../components/AddNewProduct";
 const Dashboard = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [productsFilter, setProductsFilter] = useState("همه");
   const itemsPerPage = 4;
 
   useEffect(() => {
@@ -31,9 +32,26 @@ const Dashboard = () => {
     setCurrentPage(1);
   }, []);
 
+  const filteredProduct = useMemo(() => {
+    switch (productsFilter) {
+      case "همه": {
+        return [...allProducts];
+      }
+      case "درحال اتمام": {
+        return [...allProducts].filter((product) => product.qty <= 2);
+      }
+      case "ناموجودها": {
+        return [...allProducts].filter((product) => product.qty === 0);
+      }
+      default: {
+        return [...allProducts];
+      }
+    }
+  }, [allProducts, productsFilter]);
+
   const reversedProducts = useMemo(
-    () => [...allProducts].reverse(),
-    [allProducts],
+    () => [...filteredProduct].reverse(),
+    [filteredProduct],
   );
 
   const products = useMemo(() => {
@@ -44,7 +62,7 @@ const Dashboard = () => {
   return (
     <div className="size-full p-1.5 space-y-1.5 bg-card shadow-sm rounded-3xl md:p-2 md:space-y-2 lg:p-4 lg:space-y-4">
       <section className="section-tools flex items-center justify-start gap-x-1.5 ">
-        <Filter>فیلتر</Filter>
+        <Filter onChangeFilter={setProductsFilter}>فیلتر</Filter>
         <AddNewProduct onAddProduct={handleAddProduct}>
           ایجاد محصول
         </AddNewProduct>
@@ -64,7 +82,7 @@ const Dashboard = () => {
           />
 
           <Pagination
-            totalItems={allProducts.length}
+            totalItems={filteredProduct.length}
             itemsPerPage={itemsPerPage}
             currentPage={currentPage}
             onPageChange={setCurrentPage}
