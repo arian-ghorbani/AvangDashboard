@@ -143,6 +143,28 @@
     @apply cursor-pointer [&_svg]:size-4.5 [&_path]:transition-colors [&_path]:duration-300 lg:[&_svg]:size-5;
   }
 
+  /*? Remove tool */
+  .remove-confirm-text > span {
+    @apply px-2 bg-red-600/20 text-red-600 rounded-lg;
+  }
+
+  /*? View tool */
+  .view-product-row {
+    @apply flex flex-col gap-y-2;
+  }
+
+  .view-product-label {
+    @apply pr-3 relative font-kalameh-bold;
+  }
+
+  .view-product-label::before {
+    @apply content-[""] absolute top-1/2 right-0 -translate-y-1/2 w-2 h-1 bg-primary rounded-full;
+  }
+
+  .view-product-value {
+    @apply w-full h-10 px-4 flex items-center justify-start bg-basebackground rounded-full;
+  }
+
   /*? ----- Pagination ----- */
   .pagination-prev-btn,
   .pagination-next-btn,

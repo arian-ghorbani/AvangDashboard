@@ -6,7 +6,6 @@ const Searchbox = ({ style }) => {
   const { setSearchQuery } = useContext(ProductsContext);
   const [inputValue, setInputValue] = useState("");
 
-  // debounce: 500ms بعد از آخرین کاراکتر، جستجو اجرا میشه
   useEffect(() => {
     const timer = setTimeout(() => {
       setSearchQuery(inputValue.trim());

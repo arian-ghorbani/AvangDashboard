@@ -1,17 +1,18 @@
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import Table from "../components/Table/Table";
 import TableBody from "../components/Table/elements/TableBody";
 import TableCell from "../components/Table/elements/TableCell";
 import TableHead from "../components/Table/elements/TableHead";
 import TableRow from "../components/Table/elements/TableRow";
-import EditTool from "../components/Tools/elements/EditTool";
-import RemoveTool from "../components/Tools/elements/RemoveTool";
-import ShowTool from "../components/Tools/elements/ShowTool";
-import { useEffect } from "react";
+import Edit from "../components/Tools/elements/Edit";
+import Remove from "../components/Tools/elements/Remove";
+import View from "../components/Tools/elements/View";
+import { optional } from "zod";
 
 function LastProducts({ products, tableHeadTitles, notFound }) {
   useEffect(() => {
-    if (notFound) toast("کالای مورد نظر یافت نشد!");
+    if (notFound) toast("کالای مورد نظر یافت نشد!", { style: { backgroundColor: "#e7000b", color: "#fff", borderRadius: "2rem", boxShadow: "0px 3px 15px 0px rgba(231, 0, 11, 0.25)" } });
   }, [notFound]);
 
   return (
@@ -52,9 +53,9 @@ function LastProducts({ products, tableHeadTitles, notFound }) {
                 </TableCell>
 
                 <TableCell>
-                  <ShowTool />
-                  <EditTool />
-                  <RemoveTool />
+                  <View product={product} />
+                  <Edit product={product} />
+                  <Remove product={product} />
                 </TableCell>
               </TableRow>
             ))}

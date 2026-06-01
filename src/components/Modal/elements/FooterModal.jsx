@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { ModalContext } from "../../../context/ModalProvider";
 
-function FooterModal({ cancelHandler }) {
-  const { confirmModal } = useContext(ModalContext);
-
+function FooterModal({ confirmHandler, cancelHandler }) {
   return (
     <div className="footer-modal">
       <button
@@ -17,7 +15,7 @@ function FooterModal({ cancelHandler }) {
       <button
         type="button"
         className="confirm-btn bg-green-600/20 text-green-600 hover:bg-green-600 hover:text-white active:bg-green-600 active:text-white"
-        onClick={confirmModal}
+        onClick={confirmHandler}
       >
         تایید
       </button>

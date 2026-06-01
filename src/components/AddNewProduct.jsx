@@ -1,23 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useContext, useState } from "react";
 import Input from "./Input";
 import Modal from "./Modal/Modal";
 import { ModalContext } from "../context/ModalProvider";
 
 function AddNewProduct({ children, onAddProduct }) {
-  const { toggleModal, formData, handleFormChange, registerConfirm } =
-    useContext(ModalContext);
-
-  useEffect(() => {
-    registerConfirm((data) => {
-      if (!data.name.trim()) return;
-      onAddProduct({
-        name: data.name,
-        buy: Number(data.buy),
-        sell: Number(data.sell),
-        qty: Number(data.qty),
-      });
-    });
-  }, [onAddProduct]);
+  const [isOpen, setIsOpen] = useState(false);
+  const { formData, handleFormChange, resetForm } = useContext(ModalContext);
 
   const inputs = [
     { id: "name", type: "text", placeholder: "نام محصول" },
@@ -25,6 +13,20 @@ function AddNewProduct({ children, onAddProduct }) {
     { id: "sell", type: "number", placeholder: "قیمت فروش" },
     { id: "qty", type: "number", placeholder: "تعداد" },
   ];
+
+  const toggleModal = () => setIsOpen((prev) => !prev);
+
+  const confirmHandler = () => {
+    if (!formData.name.trim()) return;
+    onAddProduct({
+      name: formData.name,
+      buy: Number(formData.buy),
+      sell: Number(formData.sell),
+      qty: Number(formData.qty),
+    });
+    resetForm();
+    toggleModal();
+  };
 
   return (
     <>
@@ -46,7 +48,12 @@ function AddNewProduct({ children, onAddProduct }) {
         </span>
       </button>
 
-      <Modal>
+      <Modal
+        isOpen={isOpen}
+        title="ایجاد محصول جدید"
+        onClickHandler={setIsOpen}
+        confirmHandler={confirmHandler}
+      >
         {inputs.map((input) => (
           <Input
             key={input.id}

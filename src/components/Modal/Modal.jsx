@@ -4,8 +4,10 @@ import HeaderModal from "./elements/HeaderModal";
 import clsx from "clsx";
 import { ModalContext } from "../../context/ModalProvider";
 
-function Modal({ children }) {
-  const { isOpen, toggleModal } = useContext(ModalContext);
+function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
+  const toggleModal = () => {
+    onClickHandler((prev) => !prev);
+  };
 
   return (
     <div
@@ -15,11 +17,11 @@ function Modal({ children }) {
       )}
     >
       <div className="wrapper w-4/5 p-2.5 space-y-4 bg-card rounded-3xl md:w-90 md:p-4">
-        <HeaderModal title="ایجاد محصول جدید" closeModalHandler={toggleModal} />
+        <HeaderModal title={title} closeModalHandler={toggleModal} />
 
         <div className="content space-y-2">{children}</div>
 
-        <FooterModal cancelHandler={toggleModal} />
+        {title !== "مشاهده محصول" && <FooterModal cancelHandler={toggleModal} confirmHandler={confirmHandler} />}
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// hooks/useLocalStorage.js
 import { useEffect, useState } from "react";
 
 function useLocalStorage(key, jsonUrl) {
@@ -6,23 +5,20 @@ function useLocalStorage(key, jsonUrl) {
 
   useEffect(() => {
     const loadData = async () => {
-      let baseData = [];
-      try {
-        const res = await fetch(jsonUrl);
-        baseData = await res.json();
-      } catch (e) {
-        console.log("خطا در خواندن فایل json: ", e);
-      }
-
       const stored = localStorage.getItem(key);
-      const storedData = stored ? JSON.parse(stored) : [];
 
-      const baseIds = new Set(baseData.map((p) => p.id));
-      const userAdded = storedData.filter((p) => !baseIds.has(p.id));
-      const merged = [...baseData, ...userAdded];
-
-      setData(merged);
-      localStorage.setItem(key, JSON.stringify(merged));
+      if (stored) {
+        setData(JSON.parse(stored));
+      } else {
+        try {
+          const res = await fetch(jsonUrl);
+          const baseData = await res.json();
+          setData(baseData);
+          localStorage.setItem(key, JSON.stringify(baseData));
+        } catch (e) {
+          console.log("خطا در خواندن فایل json: ", e);
+        }
+      }
     };
 
     loadData();
@@ -41,7 +37,17 @@ function useLocalStorage(key, jsonUrl) {
     });
   };
 
-  return [data, setDataAndSync, addItem];
+  const removeItem = (id) => {
+    setDataAndSync((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  const updateItem = (id, updatedFields) => {
+    setDataAndSync((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p))
+    );
+  };
+
+  return [data, setDataAndSync, addItem, removeItem, updateItem];
 }
 
 export default useLocalStorage;
