@@ -1,11 +1,19 @@
 import clsx from "clsx";
-import { Activity, useEffect, useState } from "react";
+import { Activity, useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import Import from "../features/Import";
 import Export from "../features/Export";
+import { ProductsContext } from "../context/ProductsProvider";
 
 const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
+  const { allProducts, setAllProducts } = useContext(ProductsContext);
   const [pages, setPages] = useState([]);
+
+  const exportDetails = {
+    itemsBackup: allProducts,
+    backupName: "Products",
+    fileBackupName: "products-backup.xlsx",
+  };
 
   const pagesIcons = {
     داشبورد: (
@@ -78,8 +86,8 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
 
         {/* Import and Export */}
         <section className="sidebar-bottom-section w-full space-y-3">
-          <Import />
-          <Export />
+          <Import handleImporting={setAllProducts} />
+          <Export {...exportDetails} />
         </section>
       </aside>
 

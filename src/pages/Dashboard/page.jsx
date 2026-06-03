@@ -11,11 +11,11 @@ const Dashboard = () => {
     useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
-  const itemsPerPage = 4;
+  const itemsPerPage = 10;
 
   const handleAddProduct = useCallback(
     (newProduct) => {
-      addProduct(newProduct); // ← اینجا از addProduct استفاده کن
+      addProduct(newProduct);
       setCurrentPage(1);
     },
     [addProduct],

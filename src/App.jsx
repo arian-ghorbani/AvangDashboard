@@ -14,7 +14,7 @@ function App() {
         </ModalProvider>
       </ProductsProvider>
 
-      <Toaster />
+      <Toaster toastOptions={{ style: { color: "#fff", borderRadius: "2rem" } }} />
     </>
   );
 }
