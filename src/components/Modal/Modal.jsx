@@ -16,12 +16,17 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
         isOpen && "visible opacity-100",
       )}
     >
-      <div className="wrapper w-4/5 p-2.5 space-y-4 bg-card rounded-3xl md:w-90 md:p-4">
+      <div className="wrapper w-90 p-4 space-y-4 bg-card rounded-3xl">
         <HeaderModal title={title} closeModalHandler={toggleModal} />
 
         <div className="content space-y-2">{children}</div>
 
-        {title !== "مشاهده محصول" && <FooterModal cancelHandler={toggleModal} confirmHandler={confirmHandler} />}
+        {title !== "مشاهده محصول" && (
+          <FooterModal
+            cancelHandler={toggleModal}
+            confirmHandler={confirmHandler}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer
-      className="w-full min-h-12 p-1.5 pt-2 flex flex-col items-center justify-center gap-y-2 bg-card shadow-sm rounded-full md:p-2.5 md:flex-row md:justify-between lg:min-h-14 lg:p-3"
+      className="w-full min-h-14 p-2.5 flex flex-row items-center justify-between gap-y-2 bg-card shadow-sm rounded-full"
       dir="ltr"
     >
       <h3>

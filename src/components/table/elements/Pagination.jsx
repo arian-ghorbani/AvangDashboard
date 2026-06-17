@@ -29,7 +29,7 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }) {
 
   return (
     <Activity mode={numberOfPages ? "visible" : "hidden"}>
-      <div className="pagination-wrapper flex items-center justify-center gap-x-2 lg:gap-x-3">
+      <div className="pagination-wrapper flex items-center justify-center gap-x-3">
         <button
           type="button"
           aria-label="دکمه قبلی"

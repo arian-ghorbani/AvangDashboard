@@ -10,7 +10,7 @@ function View({ product }) {
     <>
       <button
         type="button"
-        className="show-tool-btn hover:[&_path]:stroke-blue-600 active:[&_path]:stroke-blue-600"
+        className="show-tool-btn hover:[&_path]:stroke-blue-600"
         onClick={toggleModal}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -32,11 +32,15 @@ function View({ product }) {
           </div>
           <div className="view-product-row">
             <span className="view-product-label">قیمت خرید</span>
-            <span className="view-product-value">{product.buy.toLocaleString()} تومان</span>
+            <span className="view-product-value">
+              {product.buy.toLocaleString()} تومان
+            </span>
           </div>
           <div className="view-product-row">
             <span className="view-product-label">قیمت فروش</span>
-            <span className="view-product-value">{product.sell.toLocaleString()} تومان</span>
+            <span className="view-product-value">
+              {product.sell.toLocaleString()} تومان
+            </span>
           </div>
           <div className="view-product-row">
             <span className="view-product-label">موجودی</span>

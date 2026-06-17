@@ -55,15 +55,15 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="size-full p-1.5 space-y-1.5 bg-card shadow-sm rounded-3xl md:p-2 md:space-y-2 lg:p-4 lg:space-y-4">
-      <section className="section-tools flex items-center justify-start gap-x-1.5 ">
+    <div className="size-full p-4 space-y-4 bg-card shadow-sm rounded-3xl">
+      <section className="section-tools flex items-center justify-start gap-x-1.5">
         <Filter onChangeFilter={handleFilterChange}>فیلتر</Filter>
         <AddNewProduct onAddProduct={handleAddProduct}>
           ایجاد محصول
         </AddNewProduct>
       </section>
 
-      <section className="main-content space-y-1.5 md:space-y-2 lg:space-y-4">
+      <section className="main-content space-y-4">
         <Activity
           mode={
             allProducts.length && TABLE_HEAD_TITLES.length

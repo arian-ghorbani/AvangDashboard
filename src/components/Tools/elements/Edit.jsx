@@ -41,7 +41,7 @@ function Edit({ product }) {
     <>
       <button
         type="button"
-        className="edit-tool-btn hover:[&_path]:stroke-yellow-600 active:[&_path]:stroke-yellow-600"
+        className="edit-tool-btn hover:[&_path]:stroke-yellow-600"
         onClick={toggleModal}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

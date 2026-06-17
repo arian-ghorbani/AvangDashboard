@@ -12,7 +12,34 @@ const MainRoot = () => {
   };
 
   return (
-    <div className="container h-full md:flex md:items-start md:justify-start md:gap-x-4">
+    <div className="container h-full p-4 flex items-start justify-start gap-x-4">
+      {/* Liquid Glass SVG */}
+      <svg style={{ position: "absolute", width: 0, height: 0 }}>
+        <defs>
+          <filter
+            id="liquid-filter"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.015"
+              numOctaves="3"
+              result="noise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="18"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </defs>
+      </svg>
+
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         onClickHandler={handletToggleSidebar}

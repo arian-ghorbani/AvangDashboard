@@ -17,7 +17,7 @@ function Remove({ product }) {
     <>
       <button
         type="button"
-        className="remove-tool-btn hover:[&_path]:stroke-red-600 active:[&_path]:stroke-red-600"
+        className="remove-tool-btn hover:[&_path]:stroke-red-600"
         onClick={toggleModal}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

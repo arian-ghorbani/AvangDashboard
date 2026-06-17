@@ -3,7 +3,7 @@ function HeaderModal({ title, closeModalHandler }) {
     <div className="header-modal">
       <button
         type="button"
-        className="close-modal-btn p-1.5 bg-red-600/20 text-red-600 rounded-full transition-colors duration-300 cursor-pointer [&_svg]:size-5 hover:bg-red-600 hover:text-white active:bg-red-600 active:text-white md:p-2"
+        className="close-modal-btn p-2 bg-red-600/20 text-red-600 rounded-full transition-colors duration-300 cursor-pointer [&_svg]:size-5 hover:bg-red-600 hover:text-white"
         onClick={closeModalHandler}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

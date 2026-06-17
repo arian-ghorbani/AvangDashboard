@@ -51,7 +51,7 @@
 
 @layer components {
   body {
-    @apply p-4 font-kalameh-regular text-size-description bg-basebackground;
+    @apply font-kalameh-regular text-size-description bg-basebackground;
   }
 
   #root {
@@ -60,23 +60,23 @@
 
   /** ----- Sidebar ----- */
   #sidebar {
-    @apply max-w-65 w-2/3 p-3 fixed top-0 bottom-0 right-0 translate-x-full flex flex-col items-start justify-between bg-card shadow-sm rounded-l-4xl z-40 transition-[width,translate] duration-300 md:w-13 md:h-full md:p-2 md:static md:translate-x-0 md:rounded-4xl lg:w-16 lg:p-2.5;
+    @apply max-w-65 w-16 h-full p-2.5 flex flex-col items-start justify-between bg-card shadow-sm rounded-4xl z-40 transition-[width] duration-300;
   }
 
   #sidebar.open {
-    @apply translate-x-0 md:w-60;
+    @apply w-60;
   }
 
   .menu-item,
   .import-btn,
   .export-btn {
-    @apply w-full h-9 px-3 flex items-center justify-start gap-x-2 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5 md:size-9 md:p-0 md:justify-center lg:size-11;
+    @apply size-11 flex items-center justify-center gap-x-2 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5;
   }
 
   #sidebar.open .menu-item,
   #sidebar.open .import-btn,
   #sidebar.open .export-btn {
-    @apply md:w-full md:px-2 md:justify-start lg:px-3;
+    @apply w-full justify-start px-3;
   }
 
   #sidebar .item-text {
@@ -84,31 +84,31 @@
   }
 
   #sidebar .item-text {
-    @apply md:hidden;
+    @apply hidden;
   }
 
   #sidebar.open .item-text {
-    @apply md:block;
+    @apply block;
   }
 
   /** ----- Main ----- */
   /*? ----- Filter ----- */
   .filter-button,
   .add-new-product-btn {
-    @apply size-9 p-2 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text border-2 border-solid border-transparent rounded-full cursor-pointer transition-colors duration-300 md:w-fit md:pl-3 hover:!bg-black hover:text-white active:!bg-black active:text-white;
+    @apply w-fit h-9 p-3 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text border-2 border-solid border-transparent rounded-full cursor-pointer transition-colors duration-300 hover:!bg-black hover:text-white;
   }
 
   .filter-button svg,
   .add-new-product-btn svg {
-    @apply size-4.5 transition-colors duration-300 lg:size-5;
+    @apply size-5 transition-colors duration-300;
   }
 
   .filter-itemes-wrapper {
-    @apply w-30 absolute top-9 right-0 bg-basebackground shadow-sm rounded-2xl z-48 overflow-hidden md:w-35;
+    @apply w-35 absolute top-9 right-0 bg-basebackground shadow-sm rounded-2xl z-48 overflow-hidden;
   }
 
   .filter-item {
-    @apply px-2 py-1 rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white active:bg-black active:text-white;
+    @apply px-2 py-1 rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white;
   }
 
   .filter-item.active::before {
@@ -133,14 +133,14 @@
   }
 
   .table-cell:nth-child(6) {
-    @apply w-17 !flex items-center justify-center gap-x-1.5 lg:gap-x-2;
+    @apply w-17 !flex items-center justify-center gap-x-2;
   }
 
   /*? ----- Tools ----- */
   .show-tool-btn,
   .edit-tool-btn,
   .remove-tool-btn {
-    @apply cursor-pointer [&_svg]:size-4.5 [&_path]:transition-colors [&_path]:duration-300 lg:[&_svg]:size-5;
+    @apply cursor-pointer [&_svg]:size-5 [&_path]:transition-colors [&_path]:duration-300;
   }
 
   /*? Remove tool */
@@ -169,7 +169,7 @@
   .pagination-prev-btn,
   .pagination-next-btn,
   .pagination-btn {
-    @apply size-8 flex items-center justify-center bg-basebackground rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white active:bg-black active:text-white md:size-8.5 lg:size-9;
+    @apply size-9 flex items-center justify-center bg-basebackground rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white;
   }
 
   .pagination-prev-btn,
@@ -179,7 +179,7 @@
 
   .pagination-prev-btn:disabled,
   .pagination-next-btn:disabled {
-    @apply bg-transparent text-secondary cursor-no-drop hover:text-secondary active:text-secondary;
+    @apply bg-transparent text-secondary cursor-no-drop hover:text-secondary;
   }
 
   .pagination-btn.active {
@@ -193,17 +193,17 @@
   }
 
   .modal .input-modal {
-    @apply w-full h-9 px-4 bg-basebackground rounded-full md:h-10;
+    @apply w-full h-10 px-4 bg-basebackground rounded-full;
   }
 
   .modal .cancel-btn,
   .modal .confirm-btn {
-    @apply h-7.5 px-3.5 rounded-full cursor-pointer transition-colors duration-300 md:h-8.5;
+    @apply h-8.5 px-3.5 rounded-full cursor-pointer transition-colors duration-300;
   }
 
   /** ----- Footer ----- */
   .social-link {
-    @apply size-7 p-1 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300 md:size-8;
+    @apply size-8 p-1 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300;
   }
 
   .social-link > svg {

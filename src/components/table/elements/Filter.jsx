@@ -30,9 +30,7 @@ const Filter = ({ onChangeFilter, children }) => {
           </svg>
         </span>
 
-        <span className="hidden md:flex md:items-center md:justify-center">
-          {children}
-        </span>
+        <span className="flex items-center justify-center">{children}</span>
       </button>
 
       {openFilter && (

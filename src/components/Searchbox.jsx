@@ -30,7 +30,7 @@ const Searchbox = ({ style }) => {
         onChange={(e) => setInputValue(e.target.value)}
       />
 
-      <span className="size-6 absolute top-1/2 right-2.5 -translate-y-1/2 lg:size-6.5">
+      <span className="size-6.5 absolute top-1/2 right-2.5 -translate-y-1/2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
