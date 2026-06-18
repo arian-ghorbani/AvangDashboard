@@ -19,8 +19,8 @@
 
 @theme {
   /*! ----- Colors ----- */
-  --color-primary: #000000;
-  --color-secondary: #cccccc;
+  --color-primary: rgb(21, 93, 252);
+  --color-secondary: rgba(21, 93, 252, 0.3);
   --color-tertiary: #1e2939;
   --color-card: #ffffff;
   --color-basebackground: #f1f1f1;
@@ -28,8 +28,12 @@
   --color-secondary-text: #6a7282;
   --color-primary-icon: #000000;
   --color-secondary-icon: #6a7282;
+  --color-glass: rgba(255, 255, 255, 0.5);
   /*! ----- shadows ----- */
   --shadow-sm: 0px 0px 15px -4px rgba(0, 0, 0, 0.1);
+  --inset-shadow-sm:
+    -1px -1px 0px 0px rgba(255, 255, 255, 1),
+    1px 1px 0px 0px rgba(255, 255, 255, 0.7);
   /*! ----- Font ----- */
   --font-kalameh-regular: "Kalameh-Regular";
   --font-kalameh-medium: "Kalameh-Medium";
@@ -52,15 +56,22 @@
 @layer components {
   body {
     @apply font-kalameh-regular text-size-description bg-basebackground;
+    background-color: #f1f1f1;
+    background-image: radial-gradient(
+      rgba(12, 12, 12, 0.171) 2px,
+      transparent 0
+    );
+    background-size: 30px 30px;
+    background-position: -5px -5px;
   }
 
   #root {
-    @apply h-[calc(100dvh-2rem)];
+    @apply h-[100dvh];
   }
 
   /** ----- Sidebar ----- */
   #sidebar {
-    @apply max-w-65 w-16 h-full p-2.5 flex flex-col items-start justify-between bg-card shadow-sm rounded-4xl z-40 transition-[width] duration-300;
+    @apply max-w-65 w-14 h-full p-1.5 flex flex-col items-start justify-between bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-[28px] z-40 transition-[width] duration-300;
   }
 
   #sidebar.open {
@@ -92,10 +103,13 @@
   }
 
   /** ----- Main ----- */
+  main {
+    @apply space-y-4 grow-1 shrink-1 overflow-y-auto;
+  }
   /*? ----- Filter ----- */
   .filter-button,
   .add-new-product-btn {
-    @apply w-fit h-9 p-3 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text border-2 border-solid border-transparent rounded-full cursor-pointer transition-colors duration-300 hover:!bg-black hover:text-white;
+    @apply w-fit h-9 p-3 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text bg-card/80 border-2 border-solid border-transparent rounded-full cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
   }
 
   .filter-button svg,
@@ -203,14 +217,22 @@
 
   /** ----- Footer ----- */
   .social-link {
-    @apply size-8 p-1 flex items-center justify-center bg-basebackground rounded-full transition-colors duration-300;
-  }
-
-  .social-link > svg {
-    @apply size-full [&_path]:fill-primary-icon [&_path]:transition-colors [&_path]:duration-300;
+    @apply size-8 p-0.5 flex items-center justify-center bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full overflow-hidden transition-[width] duration-300;
   }
 
   .social-link:hover {
-    @apply bg-black [&_path]:fill-white;
+    @apply w-26 [&_.social-name]:inline-block;
+  }
+
+  .social-link span {
+    @apply size-full p-1 flex items-center gap-x-2 bg-primary rounded-[inherit];
+  }
+
+  .social-link svg {
+    @apply size-5 grow-0 shrink-0 [&_path]:fill-white [&_path]:transition-colors [&_path]:duration-300;
+  }
+
+  .social-link .social-name {
+    @apply text-white;
   }
 }

@@ -45,7 +45,10 @@ const MainRoot = () => {
         onClickHandler={handletToggleSidebar}
       />
 
-      <section id="section-content" className="h-full space-y-4 shrink grow">
+      <section
+        id="section-content"
+        className="h-full flex flex-col gap-y-6 shrink grow"
+      >
         <Header
           isSidebarOpen={isSidebarOpen}
           onClickHandler={handletToggleSidebar}

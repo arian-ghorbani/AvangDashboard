@@ -18,7 +18,7 @@ const Filter = ({ onChangeFilter, children }) => {
       <button
         type="button"
         aria-label="فیلتر"
-        className="filter-button bg-basebackground border-basebackground hover:border-black active:border-black"
+        className="filter-button"
         onClick={() => setOpenFilter(!openFilter)}
       >
         <span>

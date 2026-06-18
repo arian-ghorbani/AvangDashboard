@@ -32,7 +32,7 @@ function AddNewProduct({ children, onAddProduct }) {
     <>
       <button
         type="button"
-        className="add-new-product-btn border-black"
+        className="add-new-product-btn"
         onClick={toggleModal}
       >
         <span>

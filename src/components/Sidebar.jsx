@@ -52,7 +52,7 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
               <NavLink
                 key={page}
                 to="/"
-                className="menu-item bg-basebackground text-primary-text hover:bg-primary overflow-hidden hover:text-white"
+                className="menu-item bg-card/80 text-primary-text hover:bg-secondary hover:text-primary"
                 end
               >
                 <span className="item-icon shrink-0 grow-0">

@@ -1,10 +1,10 @@
 import { Activity, useCallback, useContext, useMemo, useState } from "react";
-import Filter from "../../components/Table/elements/Filter";
+import Filter from "/src/components/Table/elements/Filter";
 import { TABLE_HEAD_TITLES } from "/src/data/constants";
-import LastProducts from "../../features/LastProduct";
-import Pagination from "../../components/Table/elements/Pagination";
-import AddNewProduct from "../../components/AddNewProduct";
-import { ProductsContext } from "../../context/ProductsProvider";
+import LastProducts from "/src/features/LastProduct";
+import Pagination from "/src/components/Table/elements/Pagination";
+import AddNewProduct from "/src/components/AddNewProduct";
+import { ProductsContext } from "/src/context/ProductsProvider";
 
 const Dashboard = () => {
   const { allProducts, setAllProducts, searchQuery, addProduct } =
@@ -55,37 +55,39 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="size-full p-4 space-y-4 bg-card shadow-sm rounded-3xl">
-      <section className="section-tools flex items-center justify-start gap-x-1.5">
+    <>
+      <section className="section-tools h-12 px-1.5 inline-flex items-center justify-start gap-x-1.5 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
         <Filter onChangeFilter={handleFilterChange}>فیلتر</Filter>
         <AddNewProduct onAddProduct={handleAddProduct}>
           ایجاد محصول
         </AddNewProduct>
       </section>
 
-      <section className="main-content space-y-4">
-        <Activity
-          mode={
-            allProducts.length && TABLE_HEAD_TITLES.length
-              ? "visible"
-              : "hidden"
-          }
-        >
-          <LastProducts
-            products={products}
-            tableHeadTitles={TABLE_HEAD_TITLES}
-            notFound={filteredProduct.length === 0}
-          />
+      <div className="w-full p-4 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-3xl">
+        <section className="main-content space-y-4">
+          <Activity
+            mode={
+              allProducts.length && TABLE_HEAD_TITLES.length
+                ? "visible"
+                : "hidden"
+            }
+          >
+            <LastProducts
+              products={products}
+              tableHeadTitles={TABLE_HEAD_TITLES}
+              notFound={filteredProduct.length === 0}
+            />
 
-          <Pagination
-            totalItems={filteredProduct.length}
-            itemsPerPage={itemsPerPage}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-          />
-        </Activity>
-      </section>
-    </div>
+            <Pagination
+              totalItems={filteredProduct.length}
+              itemsPerPage={itemsPerPage}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+          </Activity>
+        </section>
+      </div>
+    </>
   );
 };
 

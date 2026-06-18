@@ -17,7 +17,7 @@ const Searchbox = ({ style }) => {
   return (
     <form
       action="#"
-      className={clsx("relative bg-basebackground rounded-full", style)}
+      className={clsx("relative bg-card/80 rounded-full", style)}
       onSubmit={(e) => e.preventDefault()}
     >
       <input
