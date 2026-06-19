@@ -56,7 +56,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <section className="section-tools h-12 px-1.5 inline-flex items-center justify-start gap-x-1.5 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
+      <section className="section-tools h-12 px-1.5 sticky top-0 right-0 z-10 inline-flex items-center justify-start gap-x-1.5 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
         <Filter onChangeFilter={handleFilterChange}>فیلتر</Filter>
         <AddNewProduct onAddProduct={handleAddProduct}>
           ایجاد محصول

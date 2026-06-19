@@ -81,35 +81,22 @@
   .menu-item,
   .import-btn,
   .export-btn {
-    @apply size-11 flex items-center justify-center gap-x-2 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5;
-  }
-
-  #sidebar.open .menu-item,
-  #sidebar.open .import-btn,
-  #sidebar.open .export-btn {
-    @apply w-full justify-start px-3;
+    @apply w-full h-11 px-[11px] flex items-center justify-start gap-x-3 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5;
   }
 
   #sidebar .item-text {
     @apply grow-0 shrink-0;
   }
 
-  #sidebar .item-text {
-    @apply hidden;
-  }
-
-  #sidebar.open .item-text {
-    @apply block;
-  }
-
   /** ----- Main ----- */
   main {
     @apply space-y-4 grow-1 shrink-1 overflow-y-auto;
   }
+
   /*? ----- Filter ----- */
   .filter-button,
   .add-new-product-btn {
-    @apply w-fit h-9 p-3 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text bg-card/80 border-2 border-solid border-transparent rounded-full cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
+    @apply w-fit h-9 p-3 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text bg-card/80 rounded-full cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
   }
 
   .filter-button svg,
@@ -118,20 +105,20 @@
   }
 
   .filter-itemes-wrapper {
-    @apply w-35 absolute top-9 right-0 bg-basebackground shadow-sm rounded-2xl z-48 overflow-hidden;
+    @apply w-35 absolute top-11 right-0 bg-card backdrop-blur-xs inset-shadow-sm rounded-lg overflow-hidden;
   }
 
   .filter-item {
-    @apply px-2 py-1 rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white;
+    @apply px-2.5 py-1 relative cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
   }
 
   .filter-item.active::before {
-    @apply content-['✔️'] ml-1;
+    @apply content-[''] w-1 h-2/3 absolute top-1/2 right-0 -translate-y-1/2 bg-primary rounded-full;
   }
 
   /*? ----- Table ----- */
   .table-head-row .table-row-elem {
-    @apply bg-basebackground;
+    @apply bg-card;
   }
 
   .table-cell:nth-child(1) {

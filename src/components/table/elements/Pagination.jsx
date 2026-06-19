@@ -47,7 +47,9 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }) {
           </svg>
         </button>
 
-        {paginationButtons}
+        <div className="pages-wrapper h-10 flex items-center justify-center gap-x-px bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
+          {paginationButtons}
+        </div>
 
         <button
           type="button"
