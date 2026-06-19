@@ -33,8 +33,10 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }) {
         <button
           type="button"
           aria-label="دکمه قبلی"
-          className="pagination-prev-btn"
-          disabled={currentPage === 1}
+          className={clsx(
+            "pagination-prev-btn",
+            currentPage === 1 ? "invisible" : "visible",
+          )}
           onClick={prevPage}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -47,15 +49,17 @@ function Pagination({ totalItems, itemsPerPage, currentPage, onPageChange }) {
           </svg>
         </button>
 
-        <div className="pages-wrapper h-10 flex items-center justify-center gap-x-px bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
+        <div className="pages-wrapper h-9 flex items-center justify-center gap-x-px bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
           {paginationButtons}
         </div>
 
         <button
           type="button"
           aria-label="دکمه بعدی"
-          className="pagination-next-btn"
-          disabled={currentPage === numberOfPages}
+          className={clsx(
+            "pagination-next-btn",
+            currentPage === numberOfPages ? "invisible" : "visible",
+          )}
           onClick={nextPage}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

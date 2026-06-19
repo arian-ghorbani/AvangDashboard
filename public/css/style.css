@@ -170,21 +170,16 @@
   .pagination-prev-btn,
   .pagination-next-btn,
   .pagination-btn {
-    @apply size-9 flex items-center justify-center bg-basebackground rounded-full cursor-pointer transition-colors duration-300 hover:bg-black hover:text-white;
+    @apply size-9 flex items-center justify-center rounded-full cursor-pointer transition-colors duration-300;
   }
 
   .pagination-prev-btn,
   .pagination-next-btn {
-    @apply [&_svg]:size-7;
-  }
-
-  .pagination-prev-btn:disabled,
-  .pagination-next-btn:disabled {
-    @apply bg-transparent text-secondary cursor-no-drop hover:text-secondary;
+    @apply bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm [&_svg]:size-7 hover:bg-secondary hover:text-primary;
   }
 
   .pagination-btn.active {
-    @apply bg-black text-white;
+    @apply bg-secondary text-primary;
   }
 
   /*? ----- Modal -----  */
