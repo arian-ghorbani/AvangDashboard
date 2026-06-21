@@ -49,7 +49,7 @@
   }
 
   .container {
-    @apply !max-w-375 mx-auto;
+    @apply max-w-375! mx-auto;
   }
 }
 
@@ -66,7 +66,7 @@
   }
 
   #root {
-    @apply h-[100dvh];
+    @apply h-dvh;
   }
 
   /** ----- Sidebar ----- */
@@ -81,7 +81,7 @@
   .menu-item,
   .import-btn,
   .export-btn {
-    @apply w-full h-11 px-[11px] flex items-center justify-start gap-x-3 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5;
+    @apply w-full h-11 px-2.75 flex items-center justify-start gap-x-3 font-kalameh-medium font-[15px] rounded-full transition-colors duration-300 overflow-hidden cursor-pointer [&_svg]:size-5.5;
   }
 
   #sidebar .item-text {
@@ -90,7 +90,7 @@
 
   /** ----- Main ----- */
   main {
-    @apply space-y-4 grow-1 shrink-1 overflow-y-auto;
+    @apply space-y-4 grow shrink overflow-y-auto;
   }
 
   /*? ----- Filter ----- */
@@ -126,7 +126,7 @@
   }
 
   .table-cell:nth-child(2) {
-    @apply !flex-2;
+    @apply flex-2!;
   }
 
   .table-cell:nth-child(5) {
@@ -134,7 +134,7 @@
   }
 
   .table-cell:nth-child(6) {
-    @apply w-17 !flex items-center justify-center gap-x-2;
+    @apply w-17 flex! items-center justify-center gap-x-2;
   }
 
   /*? ----- Tools ----- */

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { createPortal } from "react-dom";
 import FooterModal from "./elements/FooterModal";
 import HeaderModal from "./elements/HeaderModal";
 import clsx from "clsx";
@@ -9,7 +10,7 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
     onClickHandler((prev) => !prev);
   };
 
-  return (
+  return createPortal(
     <div
       className={clsx(
         "modal size-full fixed top-0 left-0 flex items-center justify-center bg-black/30 z-50 invisible opacity-0 transition-opacity duration-300",
@@ -28,7 +29,8 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
           />
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
