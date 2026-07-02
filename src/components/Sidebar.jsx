@@ -16,11 +16,12 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
   };
 
   const pagesIcons = {
-    داشبورد: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    محصولات: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+        <path d="M0 0h640v640H0z" fill="none" />
         <path
           fill="currentColor"
-          d="M11 4.68v3.88a2.45 2.45 0 0 1-1.509 2.258A2.4 2.4 0 0 1 8.56 11H4.68a2.44 2.44 0 0 1-2.43-2.44V4.69a2.44 2.44 0 0 1 2.43-2.44h3.88A2.44 2.44 0 0 1 11 4.68m10.75.01v3.87a2.4 2.4 0 0 1-.71 1.72a2.38 2.38 0 0 1-1.72.72h-3.88a2.45 2.45 0 0 1-2.256-1.502A2.4 2.4 0 0 1 13 8.56V4.69a2.4 2.4 0 0 1 .72-1.72a2.42 2.42 0 0 1 1.72-.72h3.88a2.44 2.44 0 0 1 2.43 2.44M11 15.45v3.87a2.44 2.44 0 0 1-2.44 2.43H4.68a2.45 2.45 0 0 1-1.72-.71a2.4 2.4 0 0 1-.71-1.72v-3.87a2.4 2.4 0 0 1 .71-1.72A2.47 2.47 0 0 1 4.68 13h3.88A2.46 2.46 0 0 1 11 15.45m10.75 1.93A4.37 4.37 0 1 1 17.37 13a4.4 4.4 0 0 1 4.049 2.707c.22.53.332 1.099.331 1.673"
+          d="M288 64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V64h32c35.3 0 64 28.7 64 64v128c0 5.5-.7 10.9-2 16H194c-1.3-5.1-2-10.5-2-16V128c0-35.3 28.7-64 64-64zm96 512c-11.2 0-21.8-2.9-31-8c9.5-16.5 15-35.6 15-56V384c0-20.4-5.5-39.5-15-56c9.2-5.1 19.7-8 31-8h32v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h32c35.3 0 64 28.7 64 64v128c0 35.3-28.7 64-64 64zM64 384c0-35.3 28.7-64 64-64h32v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h32c35.3 0 64 28.7 64 64v128c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64z"
         />
       </svg>
     ),
@@ -52,7 +53,7 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
               <NavLink
                 key={page}
                 to="/"
-                className="menu-item bg-card/80 text-primary-text hover:bg-secondary hover:text-primary"
+                className="menu-item bg-basebackground text-primary-text hover:bg-secondary hover:text-primary"
                 end
               >
                 <span className="item-icon shrink-0 grow-0">

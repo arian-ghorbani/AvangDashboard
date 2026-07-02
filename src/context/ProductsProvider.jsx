@@ -4,8 +4,13 @@ import useLocalStorage from "../hooks/useLocalStorage";
 export const ProductsContext = createContext();
 
 function ProductsProvider({ children }) {
-  const [allProducts, setAllProducts, addProduct, removeProduct, updateProduct] =
-    useLocalStorage("products", "/src/data/products.json");
+  const [
+    allProducts,
+    setAllProducts,
+    addProduct,
+    removeProduct,
+    updateProduct,
+  ] = useLocalStorage("products");
   const [searchQuery, setSearchQuery] = useState("");
 
   return (

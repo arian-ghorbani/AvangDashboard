@@ -11,7 +11,7 @@ const Dashboard = () => {
     useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
-  const itemsPerPage = 10;
+  const itemsPerPage = 12;
 
   const handleAddProduct = useCallback(
     (newProduct) => {
@@ -56,14 +56,14 @@ const Dashboard = () => {
 
   return (
     <>
-      <section className="section-tools h-12 px-1.5 sticky top-0 right-0 z-10 inline-flex items-center justify-start gap-x-1.5 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
+      <section className="section-tools h-12 px-1.5 sticky top-0 right-0 z-10 inline-flex items-center justify-start gap-x-1.5 bg-card shadow-sm rounded-full">
         <Filter onChangeFilter={handleFilterChange}>فیلتر</Filter>
         <AddNewProduct onAddProduct={handleAddProduct}>
           ایجاد محصول
         </AddNewProduct>
       </section>
 
-      <div className="w-full p-4 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-3xl">
+      <div className="w-full p-4 bg-card rounded-3xl shadow-sm">
         <section className="main-content space-y-4">
           <Activity
             mode={

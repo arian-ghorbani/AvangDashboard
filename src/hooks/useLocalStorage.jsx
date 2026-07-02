@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useLocalStorage(key, jsonUrl) {
+function useLocalStorage(key, defaultValue) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -11,10 +11,8 @@ function useLocalStorage(key, jsonUrl) {
         setData(JSON.parse(stored));
       } else {
         try {
-          const res = await fetch(jsonUrl);
-          const baseData = await res.json();
-          setData(baseData);
-          localStorage.setItem(key, JSON.stringify(baseData));
+          setData(defaultValue);
+          localStorage.setItem(key, defaultValue);
         } catch (e) {
           console.log("خطا در خواندن فایل json: ", e);
         }
@@ -43,7 +41,7 @@ function useLocalStorage(key, jsonUrl) {
 
   const updateItem = (id, updatedFields) => {
     setDataAndSync((prev) =>
-      prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p))
+      prev.map((p) => (p.id === id ? { ...p, ...updatedFields } : p)),
     );
   };
 

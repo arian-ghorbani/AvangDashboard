@@ -17,10 +17,12 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
         isOpen && "visible opacity-100",
       )}
     >
-      <div className="wrapper w-90 p-4 space-y-4 bg-card rounded-3xl">
+      <div className="wrapper w-90 p-4 space-y-4 rounded-3xl">
         <HeaderModal title={title} closeModalHandler={toggleModal} />
 
-        <div className="content space-y-2">{children}</div>
+        <div className="content bg-card rounded-3xl overflow-hidden">
+          {children}
+        </div>
 
         {title !== "مشاهده محصول" && (
           <FooterModal

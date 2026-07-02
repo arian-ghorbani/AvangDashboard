@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full min-h-13 px-1.5 flex items-center justify-between gap-y-2 bg-glass backdrop-filter-[url('#liquid-filter')blur(1px)] inset-shadow-sm rounded-full">
+    <footer className="w-full min-h-13 px-3 flex items-center justify-between gap-y-2 bg-card shadow-sm rounded-full">
       <div className="socials-wrapper flex items-center justify-center gap-x-3">
         {/* Link to telegram */}
         <a

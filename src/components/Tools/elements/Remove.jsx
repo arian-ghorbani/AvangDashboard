@@ -45,7 +45,7 @@ function Remove({ product }) {
         onClickHandler={setIsOpen}
         confirmHandler={confirmHandler}
       >
-        <p className="remove-confirm-text">
+        <p className="remove-confirm-text p-4">
           آیا از حذف <span>{product.name}</span> اطمینان دارید؟
         </p>
       </Modal>

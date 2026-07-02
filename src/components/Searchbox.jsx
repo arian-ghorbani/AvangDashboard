@@ -17,7 +17,7 @@ const Searchbox = ({ style }) => {
   return (
     <form
       action="#"
-      className={clsx("relative bg-card/80 rounded-full", style)}
+      className={clsx("relative bg-basebackground rounded-full", style)}
       onSubmit={(e) => e.preventDefault()}
     >
       <input
@@ -25,7 +25,7 @@ const Searchbox = ({ style }) => {
         type="text"
         name="searchbox"
         id="searchbox"
-        className="size-full pr-10 pl-4 font-kalameh-medium"
+        className="size-full pr-10 pl-4 font-kalameh-medium rounded-[inherit]"
         placeholder="جستجو کنید ..."
         onChange={(e) => setInputValue(e.target.value)}
       />

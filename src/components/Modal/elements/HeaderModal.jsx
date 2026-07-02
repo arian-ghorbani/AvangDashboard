@@ -1,6 +1,6 @@
 function HeaderModal({ title, closeModalHandler }) {
   return (
-    <div className="header-modal">
+    <div className="header-modal p-1 bg-card rounded-full">
       <button
         type="button"
         className="close-modal-btn p-2 bg-red-600/20 text-red-600 rounded-full transition-colors duration-300 cursor-pointer [&_svg]:size-5 hover:bg-red-600 hover:text-white"

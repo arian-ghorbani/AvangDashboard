@@ -25,26 +25,31 @@ function View({ product }) {
       </button>
 
       <Modal isOpen={isOpen} title="مشاهده محصول" onClickHandler={setIsOpen}>
-        <div className="view-product-details space-y-2">
-          <div className="view-product-row">
-            <span className="view-product-label">نام محصول</span>
-            <span className="view-product-value">{product.name}</span>
-          </div>
-          <div className="view-product-row">
-            <span className="view-product-label">قیمت خرید</span>
-            <span className="view-product-value">
-              {product.buy.toLocaleString()} تومان
-            </span>
-          </div>
-          <div className="view-product-row">
-            <span className="view-product-label">قیمت فروش</span>
-            <span className="view-product-value">
-              {product.sell.toLocaleString()} تومان
-            </span>
-          </div>
-          <div className="view-product-row">
-            <span className="view-product-label">موجودی</span>
-            <span className="view-product-value">{product.qty} عدد</span>
+        <div
+          className="p-4
+        "
+        >
+          <div className="view-product-details space-y-2">
+            <div className="view-product-row">
+              <span className="view-product-label">نام محصول</span>
+              <span className="view-product-value">{product.name}</span>
+            </div>
+            <div className="view-product-row">
+              <span className="view-product-label">قیمت خرید</span>
+              <span className="view-product-value">
+                {product.buy.toLocaleString()} تومان
+              </span>
+            </div>
+            <div className="view-product-row">
+              <span className="view-product-label">قیمت فروش</span>
+              <span className="view-product-value">
+                {product.sell.toLocaleString()} تومان
+              </span>
+            </div>
+            <div className="view-product-row">
+              <span className="view-product-label">موجودی</span>
+              <span className="view-product-value">{product.qty} عدد</span>
+            </div>
           </div>
         </div>
       </Modal>
