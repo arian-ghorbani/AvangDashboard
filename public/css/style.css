@@ -64,7 +64,7 @@
   /** ----- Header ----- */
   .right-section,
   .left-section {
-    @apply h-13 px-1.5 flex items-center justify-start gap-x-2.5 bg-card shadow-sm rounded-full;
+    @apply h-13 px-1.5 flex items-center justify-start gap-x-2.5 bg-card text-primary-text shadow-sm rounded-full;
   }
 
   .menu-btn,
@@ -108,7 +108,7 @@
   }
 
   .filter-itemes-wrapper {
-    @apply w-35 absolute top-11 right-0 bg-card shadow-sm rounded-lg overflow-hidden;
+    @apply w-35 absolute top-11 right-0 bg-card text-primary-text shadow-sm rounded-lg overflow-hidden;
   }
 
   .filter-item {
@@ -121,7 +121,11 @@
 
   /*? ----- Table ----- */
   .table-head-row .table-row-elem {
-    @apply bg-basebackground;
+    @apply bg-basebackground text-primary-text;
+  }
+
+  .table-cell {
+    @apply text-primary-text;
   }
 
   .table-cell:nth-child(1) {
@@ -144,7 +148,7 @@
   .show-tool-btn,
   .edit-tool-btn,
   .remove-tool-btn {
-    @apply cursor-pointer [&_svg]:size-5 [&_path]:transition-colors [&_path]:duration-300;
+    @apply text-primary-text cursor-pointer [&_svg]:size-5 [&_path]:transition-colors [&_path]:duration-300;
   }
 
   /*? Remove tool */
@@ -173,7 +177,7 @@
   .pagination-prev-btn,
   .pagination-next-btn,
   .pagination-btn {
-    @apply size-9 flex items-center justify-center rounded-full cursor-pointer transition-colors duration-300;
+    @apply size-9 flex items-center justify-center rounded-full text-primary-text cursor-pointer transition-colors duration-300;
   }
 
   .pagination-prev-btn,
@@ -188,11 +192,11 @@
   /*? ----- Modal -----  */
   .modal .header-modal,
   .modal .footer-modal {
-    @apply flex items-center justify-start gap-x-2;
+    @apply flex items-center justify-start gap-x-2 text-primary-text;
   }
 
   .modal .input-modal {
-    @apply w-full h-12 px-4 bg-card not-last:border-b-2 not-last:border-solid not-last:border-basebackground;
+    @apply w-full h-12 px-4 bg-card text-primary-text not-last:border-b-2 not-last:border-solid not-last:border-basebackground;
   }
 
   .modal .cancel-btn,

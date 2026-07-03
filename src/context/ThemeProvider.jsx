@@ -42,7 +42,10 @@ function ThemeProvider({ children }) {
       htmlElem.style.setProperty("--color-primary-text", "#000000");
       htmlElem.style.setProperty("--color-secondary-text", "#6a7282");
     } else {
-      // code
+      htmlElem.style.setProperty("--color-card", "#1e2939");
+      htmlElem.style.setProperty("--color-basebackground", "#101828");
+      htmlElem.style.setProperty("--color-primary-text", "#ffffff");
+      htmlElem.style.setProperty("--color-secondary-text", "#6a7282");
     }
   }, [theme]);
 

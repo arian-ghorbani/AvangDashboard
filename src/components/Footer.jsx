@@ -63,7 +63,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <h3>
+      <h3 className="text-primary-text">
         Created by{" "}
         <span className="font-kalameh-bold text-primary">Arian Ghorbani</span>
       </h3>

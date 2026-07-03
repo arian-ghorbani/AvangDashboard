@@ -20,7 +20,7 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
       <div className="wrapper w-90 p-4 space-y-4 rounded-3xl">
         <HeaderModal title={title} closeModalHandler={toggleModal} />
 
-        <div className="content bg-card rounded-3xl overflow-hidden">
+        <div className="content bg-card text-primary-text rounded-3xl overflow-hidden">
           {children}
         </div>
 

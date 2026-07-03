@@ -38,13 +38,13 @@ const Searchbox = ({ style }) => {
         >
           <path
             fill="currentColor"
-            className="fill-secondary-icon"
+            className="fill-secondary-text"
             d="M15.793 15.793a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414"
             opacity="0.5"
           />
           <path
             fill="currentColor"
-            className="fill-primary-icon"
+            className="fill-primary-text"
             d="M2.75 10.5a7.75 7.75 0 1 1 15.5 0a7.75 7.75 0 0 1-15.5 0m7.75-6.25a6.25 6.25 0 1 0 0 12.5a6.25 6.25 0 0 0 0-12.5"
           />
         </svg>
