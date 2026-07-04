@@ -21,13 +21,10 @@
   /*! ----- Colors ----- */
   --color-primary: rgb(21, 93, 252);
   --color-secondary: rgba(21, 93, 252, 0.3);
-  --color-tertiary: #1e2939;
   --color-card: #ffffff;
   --color-basebackground: #f7f8fa;
   --color-primary-text: #000000;
   --color-secondary-text: #6a7282;
-  --color-primary-icon: #000000;
-  --color-secondary-icon: #6a7282;
   /*! ----- shadows ----- */
   --shadow-sm: 0px 3px 10px -8px rgba(0, 0, 0, 0.1);
   --inset-shadow-sm:
@@ -206,11 +203,15 @@
 
   /** ----- Footer ----- */
   .social-link {
-    @apply size-7.5 flex items-center justify-center rounded-full overflow-hidden transition-[width] duration-300;
+    @apply size-7.5 flex items-center justify-center relative rounded-full z-1;
   }
 
-  .social-link:hover {
-    @apply w-26 [&_.social-name]:inline-block;
+  .social-link::before {
+    @apply content-[""] size-1.5 absolute top-1/2 left-1/2 -translate-1/2 bg-primary rounded-full -z-1 transition-transform duration-300;
+  }
+
+  .social-link:hover::before {
+    @apply -translate-y-6;
   }
 
   .social-link span {
@@ -219,9 +220,5 @@
 
   .social-link svg {
     @apply size-5 grow-0 shrink-0 [&_path]:fill-white [&_path]:transition-colors [&_path]:duration-300;
-  }
-
-  .social-link .social-name {
-    @apply text-white;
   }
 }
