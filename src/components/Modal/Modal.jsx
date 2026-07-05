@@ -24,7 +24,8 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
           {children}
         </div>
 
-        {title !== "مشاهده محصول" && (
+        {title === "مشاهده محصول" ? null : title ===
+          "بهم انرژی بده :)" ? null : (
           <FooterModal
             cancelHandler={toggleModal}
             confirmHandler={confirmHandler}

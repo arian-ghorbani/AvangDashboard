@@ -1,3 +1,5 @@
+import Coffee from "./Coffee";
+
 const Footer = () => {
   return (
     <footer className="w-full min-h-13 px-3 flex items-center justify-between gap-y-2 bg-card shadow-sm rounded-full">
@@ -58,18 +60,7 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Coffee */}
-        <button className="coffee-btn size-9 px-1 flex items-center justify-start gap-2 bg-[rgba(111,78,55,0.2)] rounded-full overflow-hidden transition-[width,padding] cursor-pointer duration-300 hover:w-118.5 hover:px-2">
-          <img
-            src="/public/images/coffee.png"
-            alt="تصویر کافی"
-            className="size-6.5 grow-0 shrink-0"
-          />
-
-          <p className="text-nowrap grow shrink ">
-            هر کار قشنگی، به حمایت قشنگ نیاز داره. منو یه کافی مهمون کن :)
-          </p>
-        </button>
+        <Coffee />
       </section>
 
       <h3 className="text-primary-text">
