@@ -1,4 +1,11 @@
-import { Activity, useCallback, useContext, useMemo, useState } from "react";
+import {
+  Activity,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import Filter from "/src/components/Table/elements/Filter";
 import { TABLE_HEAD_TITLES } from "/src/data/constants";
 import LastProducts from "/src/features/LastProduct";
@@ -12,6 +19,10 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
   const itemsPerPage = 12;
+
+  useEffect(() => {
+    document.title = "محصولات";
+  }, []);
 
   const handleAddProduct = useCallback(
     (newProduct) => {
@@ -34,6 +45,7 @@ const Dashboard = () => {
 
   const filteredProduct = useMemo(() => {
     if (!searchQuery) return filteredByCategory;
+    setCurrentPage(1);
     return filteredByCategory.filter((p) =>
       p.name.toLowerCase().includes(searchQuery.toLowerCase()),
     );
