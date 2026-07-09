@@ -1,1 +1,7 @@
-{ "pages": ["محصولات"] }
+{
+  "pages": [
+    { "title": "محصولات", "link": "products" },
+    { "title": "خدمات", "link": "services" },
+    { "title": "مشتریان", "link": "users" }
+  ]
+}
