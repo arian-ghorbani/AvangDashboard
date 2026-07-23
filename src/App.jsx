@@ -5,15 +5,21 @@ import ModalProvider from "./context/ModalProvider";
 import ProductsProvider from "./context/ProductsProvider";
 import { Toaster } from "react-hot-toast";
 import ThemeProvider from "./context/ThemeProvider";
+import ServicesProvider from "./context/ServicesProvider";
+import UsersProvider from "./context/UsersProvider";
 
 function App() {
   return (
     <>
       <ThemeProvider>
         <ProductsProvider>
-          <ModalProvider>
-            <RouterProvider router={router} />
-          </ModalProvider>
+          <ServicesProvider>
+            <UsersProvider>
+              <ModalProvider>
+                <RouterProvider router={router} />
+              </ModalProvider>
+            </UsersProvider>
+          </ServicesProvider>
         </ProductsProvider>
       </ThemeProvider>
 

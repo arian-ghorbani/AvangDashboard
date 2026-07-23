@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 function useLocalStorage(key, defaultValue) {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
@@ -17,6 +18,8 @@ function useLocalStorage(key, defaultValue) {
           console.log("خطا در خواندن فایل json: ", e);
         }
       }
+
+      setIsLoading(false);
     };
 
     loadData();
@@ -45,7 +48,7 @@ function useLocalStorage(key, defaultValue) {
     );
   };
 
-  return [data, setDataAndSync, addItem, removeItem, updateItem];
+  return [data, setDataAndSync, isLoading, addItem, removeItem, updateItem];
 }
 
 export default useLocalStorage;

@@ -7,10 +7,11 @@ function ProductsProvider({ children }) {
   const [
     allProducts,
     setAllProducts,
+    isLoading,
     addProduct,
     removeProduct,
     updateProduct,
-  ] = useLocalStorage("products");
+  ] = useLocalStorage("products", []);
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -18,6 +19,7 @@ function ProductsProvider({ children }) {
       value={{
         allProducts,
         setAllProducts,
+        isLoading,
         addProduct,
         removeProduct,
         updateProduct,

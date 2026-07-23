@@ -39,6 +39,21 @@
   --text-size-title: clamp(1rem, 2.5vw, 1.25rem);
 }
 
+@property --rotate {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotate {
+  from {
+    --rotate: 0deg;
+  }
+  to {
+    --rotate: 360deg;
+  }
+}
+
 @layer base {
   input {
     @apply border-none outline-none;
@@ -220,5 +235,16 @@
 
   .social-link svg {
     @apply size-5 grow-0 shrink-0 [&_path]:fill-white [&_path]:transition-colors [&_path]:duration-300;
+  }
+
+  /*! ----- Empty element ----- */
+  .empty-element::before {
+    @apply content-[""] w-[calc(100%+0.2rem)] h-[calc(100%+0.2rem)] absolute top-1/2 left-1/2 -translate-1/2 rounded-[inherit] -z-1 blur-xs opacity-50;
+    background-image: conic-gradient(
+      from var(--rotate),
+      transparent 50%,
+      var(--color-primary)
+    );
+    animation: rotate 3s linear infinite;
   }
 }

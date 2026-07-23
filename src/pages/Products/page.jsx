@@ -12,9 +12,10 @@ import LastProducts from "/src/features/LastProduct";
 import Pagination from "/src/components/Table/elements/Pagination";
 import AddNewProduct from "/src/components/AddNewProduct";
 import { ProductsContext } from "/src/context/ProductsProvider";
+import IsEmpty from "../../components/IsEmpty";
 
 const Products = () => {
-  const { allProducts, setAllProducts, searchQuery, addProduct } =
+  const { allProducts, setAllProducts, isLoading, searchQuery, addProduct } =
     useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
@@ -66,7 +67,9 @@ const Products = () => {
     setCurrentPage(1);
   };
 
-  return (
+  if (isLoading) return null;
+
+  return allProducts.length > 0 ? (
     <>
       <section className="section-tools h-12 px-1.5 sticky top-0 right-0 z-10 inline-flex items-center justify-start gap-x-1.5 bg-card shadow-sm rounded-full">
         <Filter onChangeFilter={handleFilterChange}>فیلتر</Filter>
@@ -100,6 +103,8 @@ const Products = () => {
         </section>
       </div>
     </>
+  ) : (
+    <IsEmpty>محصولی برای نمایش وجود ندارد!</IsEmpty>
   );
 };
 
