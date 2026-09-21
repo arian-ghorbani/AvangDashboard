@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const ProductsContext = createContext();
@@ -12,7 +12,6 @@ function ProductsProvider({ children }) {
     removeProduct,
     updateProduct,
   ] = useLocalStorage("products", []);
-  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <ProductsContext.Provider
@@ -23,8 +22,6 @@ function ProductsProvider({ children }) {
         addProduct,
         removeProduct,
         updateProduct,
-        searchQuery,
-        setSearchQuery,
       }}
     >
       {children}

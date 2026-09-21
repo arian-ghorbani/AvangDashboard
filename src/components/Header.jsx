@@ -11,7 +11,7 @@ const Header = ({ onClickHandler }) => {
   return (
     <header className="w-full">
       <nav className="w-full flex items-center justify-between">
-        <section className="right-section ">
+        <section className="right-section">
           <button
             type="button"
             aria-label="منو"

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const ServicesContext = createContext();
@@ -11,8 +11,13 @@ function ServicesProvider({ children }) {
     addService,
     removeService,
     updateService,
-  ] = useLocalStorage("services", []);
-  const [searchQuery, setSearchQuery] = useState("");
+  ] = useLocalStorage("services", [
+    {
+      title: "نصب ویندوز + نرم افزار + درایور",
+      min_price: 1_200_000,
+      max_price: 800_000,
+    },
+  ]);
 
   return (
     <ServicesContext.Provider
@@ -23,8 +28,6 @@ function ServicesProvider({ children }) {
         addService,
         removeService,
         updateService,
-        searchQuery,
-        setSearchQuery,
       }}
     >
       {children}

@@ -13,10 +13,12 @@ import Pagination from "/src/components/Table/elements/Pagination";
 import AddNewProduct from "/src/components/AddNewProduct";
 import { ProductsContext } from "/src/context/ProductsProvider";
 import IsEmpty from "../../components/IsEmpty";
+import { useSearch } from "/src/context/SearchProvider";
 
 const Products = () => {
-  const { allProducts, setAllProducts, isLoading, searchQuery, addProduct } =
+  const { allProducts, setAllProducts, isLoading, addProduct } =
     useContext(ProductsContext);
+  const { searchQuery } = useSearch();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
   const itemsPerPage = 12;
@@ -45,7 +47,9 @@ const Products = () => {
   }, [allProducts, productsFilter]);
 
   const filteredProduct = useMemo(() => {
-    if (!searchQuery) return filteredByCategory;
+    if (!searchQuery && !isLoading) {
+      return filteredByCategory;
+    }
     setCurrentPage(1);
     return filteredByCategory.filter((p) =>
       p.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -67,7 +71,7 @@ const Products = () => {
     setCurrentPage(1);
   };
 
-  if (isLoading) return null;
+  if (!products.length && !isLoading) return null;
 
   return allProducts.length > 0 ? (
     <>

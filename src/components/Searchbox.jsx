@@ -1,10 +1,17 @@
 import clsx from "clsx";
-import { useContext, useEffect, useState } from "react";
-import { ProductsContext } from "../context/ProductsProvider";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import { useSearch } from "../context/SearchProvider";
 
 const Searchbox = ({ style }) => {
-  const { setSearchQuery } = useContext(ProductsContext);
+  const { setSearchQuery } = useSearch();
   const [inputValue, setInputValue] = useState("");
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setInputValue("");
+    setSearchQuery("");
+  }, [pathname]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

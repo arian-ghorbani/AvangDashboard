@@ -12,7 +12,13 @@ import { optional } from "zod";
 
 function LastProducts({ products, tableHeadTitles, notFound }) {
   useEffect(() => {
-    if (notFound) toast("کالای مورد نظر یافت نشد!", { style: { backgroundColor: "#d08700", boxShadow: "0px 3px 15px 0px rgba(208, 135, 0, 0.25)" } });
+    if (notFound)
+      toast("کالای مورد نظر یافت نشد!", {
+        style: {
+          backgroundColor: "#d08700",
+          boxShadow: "0px 3px 15px 0px rgba(208, 135, 0, 0.25)",
+        },
+      });
   }, [notFound]);
 
   return (

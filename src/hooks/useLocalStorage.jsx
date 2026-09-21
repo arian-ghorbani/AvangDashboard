@@ -8,12 +8,14 @@ function useLocalStorage(key, defaultValue) {
     const loadData = async () => {
       const stored = localStorage.getItem(key);
 
+      // console.log("services", stored);
+
       if (stored) {
         setData(JSON.parse(stored));
       } else {
         try {
           setData(defaultValue);
-          localStorage.setItem(key, defaultValue);
+          localStorage.setItem(key, JSON.stringify(defaultValue));
         } catch (e) {
           console.log("خطا در خواندن فایل json: ", e);
         }

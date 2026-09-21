@@ -37,11 +37,18 @@ function ThemeProvider({ children }) {
     localStorage.setItem("theme", theme);
 
     if (theme === "light") {
+      htmlElem.style.setProperty("--color-primary", "rgb(21, 93, 252)");
+      htmlElem.style.setProperty("--color-secondary", "rgba(21, 93, 252, 0.3)");
       htmlElem.style.setProperty("--color-card", "#ffffff");
       htmlElem.style.setProperty("--color-basebackground", "#f7f8fa");
       htmlElem.style.setProperty("--color-primary-text", "#000000");
       htmlElem.style.setProperty("--color-secondary-text", "#6a7282");
     } else {
+      htmlElem.style.setProperty("--color-primary", "rgb(152, 16, 250)");
+      htmlElem.style.setProperty(
+        "--color-secondary",
+        "rgba(152, 16, 250, 0.3)",
+      );
       htmlElem.style.setProperty("--color-card", "#1e2939");
       htmlElem.style.setProperty("--color-basebackground", "#101828");
       htmlElem.style.setProperty("--color-primary-text", "#ffffff");

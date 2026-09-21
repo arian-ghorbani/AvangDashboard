@@ -7,20 +7,23 @@ import { Toaster } from "react-hot-toast";
 import ThemeProvider from "./context/ThemeProvider";
 import ServicesProvider from "./context/ServicesProvider";
 import UsersProvider from "./context/UsersProvider";
+import SearchProvider from "./context/SearchProvider";
 
 function App() {
   return (
     <>
       <ThemeProvider>
-        <ProductsProvider>
-          <ServicesProvider>
-            <UsersProvider>
-              <ModalProvider>
-                <RouterProvider router={router} />
-              </ModalProvider>
-            </UsersProvider>
-          </ServicesProvider>
-        </ProductsProvider>
+        <SearchProvider>
+          <ProductsProvider>
+            <ServicesProvider>
+              <UsersProvider>
+                <ModalProvider>
+                  <RouterProvider router={router} />
+                </ModalProvider>
+              </UsersProvider>
+            </ServicesProvider>
+          </ProductsProvider>
+        </SearchProvider>
       </ThemeProvider>
 
       <Toaster
