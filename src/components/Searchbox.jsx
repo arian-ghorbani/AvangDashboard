@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { useSearch } from "../context/SearchProvider";
 
@@ -7,13 +7,20 @@ const Searchbox = ({ style }) => {
   const { setSearchQuery } = useSearch();
   const [inputValue, setInputValue] = useState("");
   const { pathname } = useLocation();
+  const isResetting = useRef(false);
 
   useEffect(() => {
+    isResetting.current = true;
     setInputValue("");
     setSearchQuery("");
   }, [pathname]);
 
   useEffect(() => {
+    if (isResetting.current) {
+      isResetting.current = false;
+      return;
+    }
+
     const timer = setTimeout(() => {
       setSearchQuery(inputValue.trim());
     }, 500);

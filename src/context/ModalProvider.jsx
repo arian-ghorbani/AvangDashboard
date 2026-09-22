@@ -2,16 +2,14 @@ import { createContext, useState } from "react";
 
 export const ModalContext = createContext();
 
-const emptyForm = { name: "", buy: "", sell: "", qty: "" };
-
 function ModalProvider({ children }) {
-  const [formData, setFormData] = useState(emptyForm);
+  const [formData, setFormData] = useState({});
 
   const handleFormChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const resetForm = () => setFormData(emptyForm);
+  const resetForm = () => setFormData({});
 
   return (
     <ModalContext.Provider value={{ formData, handleFormChange, resetForm }}>

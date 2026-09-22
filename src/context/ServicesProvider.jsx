@@ -11,13 +11,7 @@ function ServicesProvider({ children }) {
     addService,
     removeService,
     updateService,
-  ] = useLocalStorage("services", [
-    {
-      title: "نصب ویندوز + نرم افزار + درایور",
-      min_price: 1_200_000,
-      max_price: 800_000,
-    },
-  ]);
+  ] = useLocalStorage("services", []);
 
   return (
     <ServicesContext.Provider

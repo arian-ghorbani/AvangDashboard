@@ -1,19 +1,44 @@
 import clsx from "clsx";
 import { Activity, useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import Import from "../features/Import";
 import Export from "../features/Export";
 import { ProductsContext } from "../context/ProductsProvider";
+import { ServicesContext } from "../context/ServicesProvider";
+import { UsersContext } from "../context/UsersProvider";
 
 const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
   const { allProducts, setAllProducts } = useContext(ProductsContext);
+  const { allServices, setAllServices } = useContext(ServicesContext);
+  const { allUsers, setAllUsers } = useContext(UsersContext);
   const [pages, setPages] = useState([]);
+  const { pathname } = useLocation();
 
-  const exportDetails = {
-    itemsBackup: allProducts,
-    backupName: "Products",
-    fileBackupName: "products-backup.xlsx",
+  const pageDataMap = {
+    "/products": {
+      itemsBackup: allProducts,
+      setItems: setAllProducts,
+      backupName: "Products",
+      fileBackupName: "products-backup.xlsx",
+      requiredKeys: ["name", "buy", "sell", "qty"],
+    },
+    "/services": {
+      itemsBackup: allServices,
+      setItems: setAllServices,
+      backupName: "Services",
+      fileBackupName: "services-backup.xlsx",
+      requiredKeys: ["title", "min_price"],
+    },
+    "/users": {
+      itemsBackup: allUsers,
+      setItems: setAllUsers,
+      backupName: "Users",
+      fileBackupName: "users-backup.xlsx",
+      requiredKeys: [],
+    },
   };
+
+  const currentPage = pageDataMap[pathname] ?? pageDataMap["/products"];
 
   const pagesIcons = {
     محصولات: (
@@ -59,7 +84,6 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
       try {
         const res = await fetch("/src/data/pages.json");
         const data = await res.json();
-
         setPages([...data.pages]);
       } catch (error) {
         console.log("Fetching pages has error: ", error);
@@ -71,9 +95,7 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
 
   return (
     <>
-      {/* Sidebar */}
       <aside id="sidebar" className={clsx(isSidebarOpen && "open")}>
-        {/* Pages links */}
         <section className="sidebar-top-section w-full space-y-2">
           <Activity mode={pages.length ? "visible" : "hidden"}>
             {pages.map((page) => (
@@ -90,17 +112,22 @@ const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
                 <span className="item-icon shrink-0 grow-0">
                   {pagesIcons[page.title] ?? pagesIcons[0]}
                 </span>
-
                 <span className="item-text">{page.title}</span>
               </NavLink>
             ))}
           </Activity>
         </section>
 
-        {/* Import and Export */}
         <section className="sidebar-bottom-section w-full space-y-3">
-          <Import handleImporting={setAllProducts} />
-          <Export {...exportDetails} />
+          <Import
+            handleImporting={currentPage.setItems}
+            requiredKeys={currentPage.requiredKeys}
+          />
+          <Export
+            itemsBackup={currentPage.itemsBackup}
+            backupName={currentPage.backupName}
+            fileBackupName={currentPage.fileBackupName}
+          />
         </section>
       </aside>
     </>

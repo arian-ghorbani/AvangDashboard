@@ -8,7 +8,6 @@ import TableRow from "../components/Table/elements/TableRow";
 import Edit from "../components/Tools/elements/Edit";
 import Remove from "../components/Tools/elements/Remove";
 import View from "../components/Tools/elements/View";
-import { optional } from "zod";
 
 function LastProducts({ products, tableHeadTitles, notFound }) {
   useEffect(() => {

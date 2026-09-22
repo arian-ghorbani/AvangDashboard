@@ -6,18 +6,24 @@ import {
   useMemo,
   useState,
 } from "react";
-import Filter from "/src/components/Table/elements/Filter";
+import Filter from "/src/components/table/elements/Filter";
 import { TABLE_HEAD_TITLES } from "/src/data/constants";
 import LastProducts from "/src/features/LastProduct";
-import Pagination from "/src/components/Table/elements/Pagination";
-import AddNewProduct from "/src/components/AddNewProduct";
+import Pagination from "/src/components/table/elements/Pagination";
+import AddNewItem from "/src/components/AddNewItem";
 import { ProductsContext } from "/src/context/ProductsProvider";
 import IsEmpty from "../../components/IsEmpty";
 import { useSearch } from "/src/context/SearchProvider";
 
+const productFields = [
+  { id: "name", type: "text", placeholder: "نام محصول" },
+  { id: "buy", type: "number", placeholder: "قیمت خرید" },
+  { id: "sell", type: "number", placeholder: "قیمت فروش" },
+  { id: "qty", type: "number", placeholder: "تعداد" },
+];
+
 const Products = () => {
-  const { allProducts, setAllProducts, isLoading, addProduct } =
-    useContext(ProductsContext);
+  const { allProducts, isLoading, addProduct } = useContext(ProductsContext);
   const { searchQuery } = useSearch();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsFilter, setProductsFilter] = useState("همه");
@@ -47,9 +53,7 @@ const Products = () => {
   }, [allProducts, productsFilter]);
 
   const filteredProduct = useMemo(() => {
-    if (!searchQuery && !isLoading) {
-      return filteredByCategory;
-    }
+    if (!searchQuery) return filteredByCategory;
     setCurrentPage(1);
     return filteredByCategory.filter((p) =>
       p.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -71,15 +75,15 @@ const Products = () => {
     setCurrentPage(1);
   };
 
-  if (!products.length && !isLoading) return null;
+  if (isLoading) return null;
 
   return allProducts.length > 0 ? (
     <>
       <section className="section-tools h-12 px-1.5 sticky top-0 right-0 z-10 inline-flex items-center justify-start gap-x-1.5 bg-card shadow-sm rounded-full">
         <Filter onChangeFilter={handleFilterChange}>فیلتر</Filter>
-        <AddNewProduct onAddProduct={handleAddProduct}>
-          ایجاد محصول
-        </AddNewProduct>
+        <AddNewItem fields={productFields} onAdd={handleAddProduct}>
+          محصول
+        </AddNewItem>
       </section>
 
       <div className="w-full p-4 bg-card rounded-3xl shadow-sm">

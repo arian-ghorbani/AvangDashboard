@@ -1,8 +1,7 @@
 import toast from "react-hot-toast";
 import * as XLSX from "xlsx";
-import { TABLE_HEAD_TITLES } from "../data/constants";
 
-function Import({ handleImporting }) {
+function Import({ handleImporting, requiredKeys = [] }) {
   const importFromExcel = (file) => {
     try {
       const reader = new FileReader();
@@ -23,17 +22,17 @@ function Import({ handleImporting }) {
             return;
           }
 
-          //* Backup file structure
-          const requiredKeys = ["name", "buy", "sell", "qty"];
-          const hasValidKeys = requiredKeys.every((key) => key in data[0]);
-          if (!hasValidKeys) {
-            toast.error("ساختار فایل پشتیبان معتبر نیست!", {
-              style: {
-                backgroundColor: "#e7000b",
-                boxShadow: "0px 3px 15px 0px rgba(231, 0, 11, 0.25)",
-              },
-            });
-            return;
+          if (requiredKeys.length > 0) {
+            const hasValidKeys = requiredKeys.every((key) => key in data[0]);
+            if (!hasValidKeys) {
+              toast.error("ساختار فایل پشتیبان معتبر نیست!", {
+                style: {
+                  backgroundColor: "#e7000b",
+                  boxShadow: "0px 3px 15px 0px rgba(231, 0, 11, 0.25)",
+                },
+              });
+              return;
+            }
           }
 
           handleImporting(data);
