@@ -49,8 +49,8 @@ function ThemeProvider({ children }) {
         "--color-secondary",
         "rgba(152, 16, 250, 0.3)",
       );
-      htmlElem.style.setProperty("--color-card", "#1e2939");
-      htmlElem.style.setProperty("--color-basebackground", "#101828");
+      htmlElem.style.setProperty("--color-card", "#27272a");
+      htmlElem.style.setProperty("--color-basebackground", "#18181b");
       htmlElem.style.setProperty("--color-primary-text", "#ffffff");
       htmlElem.style.setProperty("--color-secondary-text", "#99a1af");
     }

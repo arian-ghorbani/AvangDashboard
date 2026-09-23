@@ -27,6 +27,7 @@
   --color-secondary-text: #6a7282;
   /*! ----- shadows ----- */
   --shadow-sm: 0px 3px 10px -8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0px 5px 10px 4px rgba(0, 0, 0, 0.1);
   --inset-shadow-sm:
     -1px -1px 0px 0px rgba(255, 255, 255, 1),
     1px 1px 0px 0px rgba(255, 255, 255, 0.7);
@@ -120,7 +121,7 @@
   }
 
   .filter-itemes-wrapper {
-    @apply w-35 absolute top-11 right-0 bg-card text-primary-text shadow-sm rounded-lg overflow-hidden;
+    @apply w-35 absolute top-11 right-0 bg-card text-primary-text shadow-md rounded-lg overflow-hidden;
   }
 
   .filter-item {
