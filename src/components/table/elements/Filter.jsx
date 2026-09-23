@@ -14,11 +14,14 @@ const Filter = ({ onChangeFilter, children }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="filter-wrapper">
       <button
         type="button"
         aria-label="فیلتر"
-        className="filter-button"
+        className={clsx(
+          "filter-button px-2.5 py-1",
+          openFilter ? "open" : null,
+        )}
         onClick={() => setOpenFilter(!openFilter)}
       >
         <span>
@@ -33,14 +36,16 @@ const Filter = ({ onChangeFilter, children }) => {
         <span className="flex items-center justify-center">{children}</span>
       </button>
 
-      {openFilter && (
+      <span className="separator w-0.75 h-1/2 bg-card grow-0 shrink-0"></span>
+
+      <section className="filter-items-wraper">
         <ul className="filter-itemes-wrapper">
           {filterItems.length ? (
             filterItems.map((item) => (
               <li
                 key={item}
                 className={clsx("filter-item", item === activeItem && "active")}
-                onClick={(e) => handleChangeFilter(item)}
+                onClick={() => handleChangeFilter(item)}
               >
                 {item}
               </li>
@@ -49,7 +54,7 @@ const Filter = ({ onChangeFilter, children }) => {
             <li className="filter-item active">همه</li>
           )}
         </ul>
-      )}
+      </section>
     </div>
   );
 };

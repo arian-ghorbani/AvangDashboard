@@ -37,7 +37,7 @@ function AddNewItem({ children, fields, onAdd }) {
     <>
       <button
         type="button"
-        className="add-new-product-btn"
+        className="add-new-product-btn w-fit h-9 p-3"
         onClick={toggleModal}
       >
         <span>

@@ -7,7 +7,7 @@ import { ProductsContext } from "../context/ProductsProvider";
 import { ServicesContext } from "../context/ServicesProvider";
 import { UsersContext } from "../context/UsersProvider";
 
-const Sidebar = ({ isSidebarOpen, onClickHandler }) => {
+const Sidebar = ({ isSidebarOpen }) => {
   const { allProducts, setAllProducts } = useContext(ProductsContext);
   const { allServices, setAllServices } = useContext(ServicesContext);
   const { allUsers, setAllUsers } = useContext(UsersContext);

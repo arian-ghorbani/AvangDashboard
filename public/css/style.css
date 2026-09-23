@@ -110,9 +110,17 @@
   }
 
   /*? ----- Filter ----- */
+  .filter-wrapper {
+    @apply w-19.5 h-9 px-0.5 flex items-center justify-start gap-x-1.5 text-primary-text bg-basebackground rounded-full overflow-hidden transition-[width] duration-400;
+  }
+
+  .filter-wrapper:has(.filter-button.open) {
+    @apply w-85.75;
+  }
+
   .filter-button,
   .add-new-product-btn {
-    @apply w-fit h-9 p-3 flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text bg-basebackground rounded-full cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
+    @apply flex items-center justify-center gap-x-1 font-kalameh-medium text-primary-text bg-basebackground rounded-full cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
   }
 
   .filter-button svg,
@@ -121,15 +129,15 @@
   }
 
   .filter-itemes-wrapper {
-    @apply w-35 absolute top-11 right-0 bg-card text-primary-text shadow-md rounded-lg overflow-hidden;
+    @apply flex items-center gap-x-1.5 shrink-0 grow;
   }
 
   .filter-item {
-    @apply px-2.5 py-1 relative cursor-pointer transition-colors duration-300 hover:bg-secondary hover:text-primary;
+    @apply px-2.5 py-1 text-nowrap cursor-pointer rounded-full transition-colors duration-300 hover:bg-secondary hover:text-primary;
   }
 
-  .filter-item.active::before {
-    @apply content-[''] w-1 h-2/3 absolute top-1/2 right-0 -translate-y-1/2 bg-primary rounded-full;
+  .filter-item.active {
+    @apply bg-secondary text-primary;
   }
 
   /*? ----- Table ----- */
