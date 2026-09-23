@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "../../Modal/Modal";
+import { ModalContext } from "../../../context/ModalProvider";
 
-function View({ product }) {
+function View({ item, fields, label = "محصول" }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { setShowFooter } = useContext(ModalContext);
+
+  useEffect(() => {
+    if (isOpen) setShowFooter(false);
+  }, [isOpen]);
 
   const toggleModal = () => setIsOpen((prev) => !prev);
 
   return (
     <>
-      <button
-        type="button"
-        className="show-tool-btn hover:[&_path]:stroke-blue-600"
-        onClick={toggleModal}
-      >
+      <button type="button" className="show-tool-btn" onClick={toggleModal}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g fill="none" stroke="currentColor" strokeWidth="1.5">
             <path
@@ -24,32 +26,24 @@ function View({ product }) {
         </svg>
       </button>
 
-      <Modal isOpen={isOpen} title="مشاهده محصول" onClickHandler={setIsOpen}>
-        <div
-          className="p-4
-        "
-        >
+      <Modal
+        isOpen={isOpen}
+        title={`مشاهده ${label}`}
+        onClickHandler={setIsOpen}
+      >
+        <div className="p-4">
           <div className="view-product-details space-y-2">
-            <div className="view-product-row">
-              <span className="view-product-label">نام محصول</span>
-              <span className="view-product-value">{product.name}</span>
-            </div>
-            <div className="view-product-row">
-              <span className="view-product-label">قیمت خرید</span>
-              <span className="view-product-value">
-                {product.buy.toLocaleString()} تومان
-              </span>
-            </div>
-            <div className="view-product-row">
-              <span className="view-product-label">قیمت فروش</span>
-              <span className="view-product-value">
-                {product.sell.toLocaleString()} تومان
-              </span>
-            </div>
-            <div className="view-product-row">
-              <span className="view-product-label">موجودی</span>
-              <span className="view-product-value">{product.qty} عدد</span>
-            </div>
+            {fields.map(({ id, placeholder, suffix }) => (
+              <div key={id} className="view-product-row">
+                <span className="view-product-label">{placeholder}</span>
+                <span className="view-product-value">
+                  {typeof item[id] === "number"
+                    ? item[id].toLocaleString()
+                    : item[id]}
+                  {suffix ? ` ${suffix}` : ""}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </Modal>

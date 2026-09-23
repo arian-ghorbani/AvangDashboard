@@ -91,6 +91,7 @@ function Import({ handleImporting, requiredKeys = [] }) {
       <label
         htmlFor="import-backup-file"
         className="import-btn bg-blue-600/30 text-blue-600 hover:bg-blue-600 hover:text-white"
+        title="بارگذاری پشتیبان"
       >
         <span className="item-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

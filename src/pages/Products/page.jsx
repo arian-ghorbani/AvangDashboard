@@ -86,7 +86,7 @@ const Products = () => {
         </AddNewItem>
       </section>
 
-      <div className="w-full p-4 bg-card rounded-3xl shadow-sm">
+      <div className="product-table w-full p-4 bg-card rounded-3xl shadow-sm">
         <section className="main-content space-y-4">
           <Activity
             mode={

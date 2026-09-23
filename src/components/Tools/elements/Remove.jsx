@@ -1,25 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Modal from "../../Modal/Modal";
-import { ProductsContext } from "../../../context/ProductsProvider";
+import { ModalContext } from "../../../context/ModalProvider";
 
-function Remove({ product }) {
-  const { removeProduct } = useContext(ProductsContext);
+function Remove({ item, onRemove, label = "محصول", nameKey = "name" }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { setShowFooter } = useContext(ModalContext);
+
+  useEffect(() => {
+    if (isOpen) setShowFooter(true);
+  }, [isOpen]);
 
   const toggleModal = () => setIsOpen((prev) => !prev);
 
   const confirmHandler = () => {
-    removeProduct(product.id);
+    onRemove(item.id);
     toggleModal();
   };
 
   return (
     <>
-      <button
-        type="button"
-        className="remove-tool-btn hover:[&_path]:stroke-red-600"
-        onClick={toggleModal}
-      >
+      <button type="button" className="remove-tool-btn" onClick={toggleModal}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g fill="none" stroke="currentColor" strokeWidth="1.5">
             <path
@@ -41,12 +41,12 @@ function Remove({ product }) {
 
       <Modal
         isOpen={isOpen}
-        title="حذف محصول"
+        title={`حذف ${label}`}
         onClickHandler={setIsOpen}
         confirmHandler={confirmHandler}
       >
         <p className="remove-confirm-text p-4">
-          آیا از حذف <span>{product.name}</span> اطمینان دارید؟
+          آیا از حذف <span>{item[nameKey]}</span> اطمینان دارید؟
         </p>
       </Modal>
     </>

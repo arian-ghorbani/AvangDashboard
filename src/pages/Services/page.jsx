@@ -7,20 +7,28 @@ import Price from "../../components/Card/elements/Price";
 import toast from "react-hot-toast";
 import { useSearch } from "/src/context/SearchProvider";
 import AddNewItem from "/src/components/AddNewItem";
+import CardTools from "/src/components/Tools/CardTools";
 
 const serviceFields = [
   { id: "title", type: "text", placeholder: "نام سرویس" },
-  { id: "min_price", type: "number", placeholder: "کمترین هزینه" },
+  {
+    id: "min_price",
+    type: "number",
+    placeholder: "کمترین هزینه",
+    suffix: "تومان",
+  },
   {
     id: "max_price",
     type: "number",
     placeholder: "بیشترین هزینه (اختیاری)",
+    suffix: "تومان",
     defaultValue: 0,
   },
 ];
 
 function Services() {
-  const { allServices, isLoading, addService } = useContext(ServicesContext);
+  const { allServices, isLoading, addService, updateService, removeService } =
+    useContext(ServicesContext);
   const { searchQuery } = useSearch();
 
   useEffect(() => {
@@ -28,9 +36,7 @@ function Services() {
   }, []);
 
   const handleAddService = useCallback(
-    (newService) => {
-      addService(newService);
-    },
+    (newService) => addService(newService),
     [addService],
   );
 
@@ -65,7 +71,7 @@ function Services() {
       {allServices.length > 0 ? (
         <div className="grid grid-cols-4 gap-6 p-1.5">
           {services.map((service) => (
-            <Card key={service.id ?? service.title}>
+            <Card key={service.title}>
               <Title>{service.title}</Title>
               <Price>
                 {service.max_price
@@ -73,6 +79,15 @@ function Services() {
                   : null}
                 {service.min_price.toLocaleString()}{" "}
               </Price>
+
+              <CardTools
+                item={service}
+                fields={serviceFields}
+                onUpdate={updateService}
+                onRemove={removeService}
+                label="سرویس"
+                nameKey="title"
+              />
             </Card>
           ))}
         </div>

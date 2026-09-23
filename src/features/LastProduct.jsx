@@ -1,15 +1,25 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
-import Table from "../components/Table/Table";
-import TableBody from "../components/Table/elements/TableBody";
-import TableCell from "../components/Table/elements/TableCell";
-import TableHead from "../components/Table/elements/TableHead";
-import TableRow from "../components/Table/elements/TableRow";
+import Table from "../components/table/Table";
+import TableBody from "../components/table/elements/TableBody";
+import TableCell from "../components/table/elements/TableCell";
+import TableHead from "../components/table/elements/TableHead";
+import TableRow from "../components/table/elements/TableRow";
 import Edit from "../components/Tools/elements/Edit";
 import Remove from "../components/Tools/elements/Remove";
 import View from "../components/Tools/elements/View";
+import { ProductsContext } from "../context/ProductsProvider";
+
+const productFields = [
+  { id: "name", type: "text", placeholder: "نام محصول" },
+  { id: "buy", type: "number", placeholder: "قیمت خرید", suffix: "تومان" },
+  { id: "sell", type: "number", placeholder: "قیمت فروش", suffix: "تومان" },
+  { id: "qty", type: "number", placeholder: "تعداد", suffix: "عدد" },
+];
 
 function LastProducts({ products, tableHeadTitles, notFound }) {
+  const { updateProduct, removeProduct } = useContext(ProductsContext);
+
   useEffect(() => {
     if (notFound)
       toast("کالای مورد نظر یافت نشد!", {
@@ -58,9 +68,19 @@ function LastProducts({ products, tableHeadTitles, notFound }) {
                 </TableCell>
 
                 <TableCell>
-                  <View product={product} />
-                  <Edit product={product} />
-                  <Remove product={product} />
+                  <View item={product} fields={productFields} label="محصول" />
+                  <Edit
+                    item={product}
+                    fields={productFields}
+                    onUpdate={updateProduct}
+                    label="محصول"
+                  />
+                  <Remove
+                    item={product}
+                    onRemove={removeProduct}
+                    label="محصول"
+                    nameKey="name"
+                  />
                 </TableCell>
               </TableRow>
             ))}

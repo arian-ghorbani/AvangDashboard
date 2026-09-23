@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { ModalContext } from "../../context/ModalProvider";
 
 function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
+  const { showFooter } = useContext(ModalContext);
   const toggleModal = () => {
     onClickHandler((prev) => !prev);
   };
@@ -24,13 +25,12 @@ function Modal({ isOpen, title, onClickHandler, confirmHandler, children }) {
           {children}
         </div>
 
-        {title === "مشاهده محصول" ? null : title ===
-          "بهم انرژی بده :)" ? null : (
+        {showFooter ? (
           <FooterModal
             cancelHandler={toggleModal}
             confirmHandler={confirmHandler}
           />
-        )}
+        ) : null}
       </div>
     </div>,
     document.body,

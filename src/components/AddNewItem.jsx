@@ -1,11 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Input from "./Input";
 import Modal from "./Modal/Modal";
 import { ModalContext } from "../context/ModalProvider";
 
 function AddNewItem({ children, fields, onAdd }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { formData, handleFormChange, resetForm } = useContext(ModalContext);
+  const { formData, handleFormChange, resetForm, setShowFooter } =
+    useContext(ModalContext);
+
+  useEffect(() => {
+    if (isOpen) setShowFooter(true);
+  }, [isOpen]);
 
   const toggleModal = () => setIsOpen((prev) => !prev);
 
@@ -30,7 +35,11 @@ function AddNewItem({ children, fields, onAdd }) {
 
   return (
     <>
-      <button type="button" className="add-new-product-btn" onClick={toggleModal}>
+      <button
+        type="button"
+        className="add-new-product-btn"
+        onClick={toggleModal}
+      >
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <path

@@ -29,6 +29,7 @@ function Export({ itemsBackup, backupName, fileBackupName }) {
   return (
     <button
       className="export-btn bg-purple-600/30 text-purple-600 hover:bg-purple-600 hover:text-white"
+      title="پشتیبان گیری"
       onClick={exportToExcel}
     >
       <span className="item-icon">

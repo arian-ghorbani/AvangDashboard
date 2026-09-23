@@ -157,10 +157,22 @@
   }
 
   /*? ----- Tools ----- */
-  .show-tool-btn,
-  .edit-tool-btn,
-  .remove-tool-btn {
+  .product-table .show-tool-btn,
+  .product-table .edit-tool-btn,
+  .product-table .remove-tool-btn {
     @apply text-primary-text cursor-pointer [&_svg]:size-5 [&_path]:transition-colors [&_path]:duration-300;
+  }
+
+  .product-table .remove-tool-btn {
+    @apply hover:[&_path]:stroke-red-600;
+  }
+
+  .product-table .edit-tool-btn {
+    @apply hover:[&_path]:stroke-yellow-600;
+  }
+
+  .product-table .show-tool-btn {
+    @apply hover:[&_path]:stroke-blue-600;
   }
 
   /*? Remove tool */

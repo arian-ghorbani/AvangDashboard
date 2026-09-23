@@ -1,6 +1,6 @@
 function Price({ children }) {
   return (
-    <section className="p-1 flex items-center justify-center gap-x-1 bg-green-500/20 text-green-600 rounded-full outline-1 outline-solid outline-green-500/20 outline-offset-2">
+    <section className="h-8 p-1 flex items-center justify-center gap-x-1 bg-green-500/20 text-green-600 rounded-full">
       <p className="priceno">{children}</p>
       {
         <svg
